@@ -9,8 +9,8 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import Modal from 'react-native-modal';
-import Pop from './src/assets/resources/Pop.jpg';
-import Rock from './src/assets/resources/Rock.jpg';
+import Pop from '../../assets/resources/Pop.jpg';
+import Rock from '../../assets/resources/Rock.jpg';
 
 function ModalFirst({isVisible, onClose, onOk}) {
   const spinValue = useRef(new Animated.Value(0));
