@@ -22,25 +22,26 @@ import {
 } from 'react-native';
 import Toast from '@rimiti/react-native-toastify';
 
-import ModalSecond from './src/components/modals/ModalAward';
+import ModalSecond from '../components/modals/ModalAward';
+import styles from '../HomeStyle';
 
-import RNBootSplash from 'react-native-bootsplash';
+// import RNBootSplash from 'react-native-bootsplash';
 
 import Carousel from 'react-native-snap-carousel';
-
-import {PlayerControls, Progress, TrackInfo} from './src/components';
-import {SetupService, QueueInitalTracksService} from './src/services';
-import {useCurrentTrack} from './src/hooks';
-
-import ModalFirst from './src/components/modals/ModalFirst';
-
-import ModalCategory from './src/components/modals/Modal';
-
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import Time from './src/components/Time';
+import {PlayerControls, Progress, TrackInfo} from '../components';
+import {SetupService, QueueInitalTracksService} from '../services';
+import {useCurrentTrack} from '../hooks';
 
-import bootSplashLogo from './src/assets/bootsplash_logo.png';
+// import ModalFirst from '../components/m';
+
+import ModalCategory from '../components/modals/Modal';
+
+import Time from '../components/Time';
+
+import MenuBar from '../components/modals/MenuBar';
+import ModalFirst from '../components/modals/ModalAward';
 
 const IMAGE = [
   'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/a.jpg',
@@ -69,7 +70,7 @@ const itemHorizontalMargin = wp(2);
 export const sliderWidth = viewportWidth;
 export const itemWidth = slideWidth + itemHorizontalMargin * 2;
 
-const Home = () => {
+const PlayMusicScreen = ({navigation}) => {
   const track = useCurrentTrack();
   const [isPlayerReady, setIsPlayerReady] = useState(false);
   const [temp, setTemp] = useState({});
@@ -79,9 +80,14 @@ const Home = () => {
   const [isShowFirstModal, setModalFirst] = useState(false);
   let [refT, setRefT] = useState(null);
   const [visibleModal, setVisibleModal] = useState(false);
+  const [openMenuBar, setOpenMenuBar] = useState(false);
 
   const toggleModal = () => {
     setVisibleModal(!visibleModal);
+  };
+
+  const toggleModalMenu = () => {
+    setOpenMenuBar(!openMenuBar);
   };
 
   const handleData = async () => {
@@ -125,50 +131,50 @@ const Home = () => {
     }
   };
 
-  const [bootSplashIsVisible, setBootSplashIsVisible] = React.useState(true);
-  const [bootSplashLogoIsLoaded, setBootSplashLogoIsLoaded] =
-    React.useState(false);
-  const opacity = React.useRef(new Animated.Value(1));
-  const translateY = React.useRef(new Animated.Value(0));
+  // const [bootSplashIsVisible, setBootSplashIsVisible] = React.useState(true);
+  // const [bootSplashLogoIsLoaded, setBootSplashLogoIsLoaded] =
+  //   React.useState(false);
+  // const opacity = React.useRef(new Animated.Value(1));
+  // const translateY = React.useRef(new Animated.Value(0));
 
-  const scaleValue = useRef(new Animated.Value(0));
+  // const scaleValue = useRef(new Animated.Value(0));
 
-  const scaleXX = scaleValue?.current?.interpolate({
-    inputRange: [0, 0.25, 0.5, 0.75, 1],
-    outputRange: [0.95, 1.5, 1, 0.8, 1],
-  });
+  // const scaleXX = scaleValue?.current?.interpolate({
+  //   inputRange: [0, 0.25, 0.5, 0.75, 1],
+  //   outputRange: [0.95, 1.5, 1, 0.8, 1],
+  // });
 
-  const opacityXX = opacity?.current?.interpolate({
-    inputRange: [0, 0.25, 0.5, 0.6, 0.75, 1],
-    outputRange: [0, 0.2, 0.4, 0.6, 0.8, 1],
-  });
+  // const opacityXX = opacity?.current?.interpolate({
+  //   inputRange: [0, 0.25, 0.5, 0.6, 0.75, 1],
+  //   outputRange: [0, 0.2, 0.4, 0.6, 0.8, 1],
+  // });
 
-  const init = async () => {
-    // You can uncomment this line to add a delay on app startup
-    // await fakeApiCallWithoutBadNetwork(3000);
+  // const init = async () => {
+  //   // You can uncomment this line to add a delay on app startup
+  //   // await fakeApiCallWithoutBadNetwork(3000);
 
-    try {
-      // Animated.timing(scaleValue.current, {
-      //   useNativeDriver: true,
-      //   toValue: 1,
-      //   // toValue: Dimensions.get('window').height,
-      //   duration: 3000,
-      // }).start();
+  //   try {
+  //     // Animated.timing(scaleValue.current, {
+  //     //   useNativeDriver: true,
+  //     //   toValue: 1,
+  //     //   // toValue: Dimensions.get('window').height,
+  //     //   duration: 3000,
+  //     // }).start();
 
-      Animated.timing(opacity.current, {
-        useNativeDriver: true,
-        toValue: 0,
-        duration: 3000,
-        easing: Easing.linear,
-      }).start(() => {
-        setBootSplashIsVisible(false);
-      });
-    } catch (error) {
-      setBootSplashIsVisible(false);
-    }
+  //     Animated.timing(opacity.current, {
+  //       useNativeDriver: true,
+  //       toValue: 0,
+  //       duration: 3000,
+  //       easing: Easing.linear,
+  //     }).start(() => {
+  //       setBootSplashIsVisible(false);
+  //     });
+  //   } catch (error) {
+  //     setBootSplashIsVisible(false);
+  //   }
 
-    await RNBootSplash.hide();
-  };
+  //   await RNBootSplash.hide();
+  // };
 
   useEffect(() => {
     // SplashScreen.show();
@@ -192,7 +198,7 @@ const Home = () => {
     run();
     showAlert();
 
-    init();
+    // init();
     // RNBootSplash.hide();
 
     return () => backHandler.remove();
@@ -209,40 +215,40 @@ const Home = () => {
     }
   };
 
-  if (!isPlayerReady) {
-    return (
-      <SafeAreaView style={styles.screenContainer}>
-        {/* <ActivityIndicator /> */}
-        {bootSplashIsVisible && (
-          <Animated.View
-            style={[
-              StyleSheet.absoluteFill,
-              styles.bootsplash,
-              // {opacity: opacityXX},
-            ]}>
-            <Animated.Image
-              source={bootSplashLogo}
-              fadeDuration={2}
-              resizeMode="contain"
-              onLoadEnd={() => setBootSplashLogoIsLoaded(true)}
-              style={[
-                styles.logo,
-                {
-                  // transform: [
-                  //   {
-                  //     // translateY: translateY.current
-                  //     // scale: scaleXX,
-                  //   },
-                  // ],
-                  opacity: opacityXX,
-                },
-              ]}
-            />
-          </Animated.View>
-        )}
-      </SafeAreaView>
-    );
-  }
+  // if (!isPlayerReady) {
+  //   return (
+  //     <SafeAreaView style={styles.screenContainer}>
+  //       {/* <ActivityIndicator /> */}
+  //       {bootSplashIsVisible && (
+  //         <Animated.View
+  //           style={[
+  //             StyleSheet.absoluteFill,
+  //             styles.bootsplash,
+  //             // {opacity: opacityXX},
+  //           ]}>
+  //           <Animated.Image
+  //             source={bootSplashLogo}
+  //             fadeDuration={2}
+  //             resizeMode="contain"
+  //             onLoadEnd={() => setBootSplashLogoIsLoaded(true)}
+  //             style={[
+  //               styles.logo,
+  //               {
+  //                 // transform: [
+  //                 //   {
+  //                 //     // translateY: translateY.current
+  //                 //     // scale: scaleXX,
+  //                 //   },
+  //                 // ],
+  //                 opacity: opacityXX,
+  //               },
+  //             ]}
+  //           />
+  //         </Animated.View>
+  //       )}
+  //     </SafeAreaView>
+  //   );
+  // }
 
   const onLink = async index => {
     console.log(LINK[index % 3]);
@@ -267,7 +273,7 @@ const Home = () => {
     <SafeAreaView style={styles.screenContainer}>
       <StatusBar barStyle={'light-content'} />
       <Toast
-        ref={c => setRefT(c)}
+        ref={React.useRef()}
         style={{
           backgroundColor: '#ffffffcf',
           paddingVertical: 25,
@@ -350,6 +356,26 @@ const Home = () => {
         }}>
         <Icon name={'music'} size={30} color="#FF344A" />
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={toggleModalMenu}
+        style={{
+          width: 100,
+          height: 100,
+          position: 'absolute',
+          top: 20,
+          left: 20,
+          borderRadius: 5,
+          zIndex: 100,
+        }}>
+        <Icon name={'bars'} size={30} color="#FF344A" />
+      </TouchableOpacity>
+      <MenuBar
+        navigation={navigation}
+        isVisible={openMenuBar}
+        toggle={toggleModalMenu}
+      />
+
       <ModalCategory isVisible={visibleModal} toggle={toggleModal} />
       <ModalFirst
         isVisible={isShowFirstModal}
@@ -364,7 +390,7 @@ const Home = () => {
         }}
       />
 
-      {bootSplashIsVisible && (
+      {/* {bootSplashIsVisible && (
         <Animated.View
           style={[
             StyleSheet.absoluteFill,
@@ -390,65 +416,11 @@ const Home = () => {
             ]}
           />
         </Animated.View>
-      )}
+      )} */}
 
       <ModalSecond isVisible={isShowAward} onOk={() => setShowAward(false)} />
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  screenContainer: {
-    flex: 1,
-    backgroundColor: '#212121',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  contentContainer: {
-    flex: 3,
-    alignItems: 'center',
-  },
-  topBarContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-    justifyContent: 'flex-end',
-  },
-  actionRowContainer: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: 'normal',
-    color: '#aaa',
-  },
-  subTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  row: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 10,
-  },
-  column: {
-    width: '100%',
-    flexDirection: 'column',
-  },
-  bootsplash: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1a1a1a',
-  },
-  logo: {
-    height: 190,
-    width: 190,
-    marginTop: 15,
-  },
-});
-
-export default Home;
+export default PlayMusicScreen;
