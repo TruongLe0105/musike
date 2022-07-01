@@ -13,10 +13,8 @@ import {
 } from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 import avatar from '../assets/sources/avatar.png';
-import background from '../assets/sources/backgroundImage.jpg';
 
 function CustomDrawer(props) {
   return (
@@ -44,7 +42,7 @@ function CustomDrawer(props) {
             <Text style={{fontSize: 16, marginRight: 5, color: 'white'}}>
               100 coins
             </Text>
-            <FontAwesome5Icon name="coins" size={14} color="green" />
+            <Icon name="coins" size={14} color="green" />
           </View>
         </ImageBackground>
         <View style={{backgroundColor: '#FFF', flex: 1}}>
@@ -60,7 +58,7 @@ function CustomDrawer(props) {
         }}>
         <TouchableOpacity style={{paddingVertical: 15}}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <FontAwesome5Icon name="check-circle" size={16} />
+            <Icon name="music" size={16} />
             <Text
               style={{
                 fontSize: 16,
@@ -73,7 +71,7 @@ function CustomDrawer(props) {
         </TouchableOpacity>
         <TouchableOpacity style={{paddingVertical: 15}}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <FontAwesome5Icon name="sign-out-alt" size={16} />
+            <Icon name="sign-out-alt" size={16} />
             <Text
               style={{
                 fontSize: 16,
@@ -81,6 +79,21 @@ function CustomDrawer(props) {
                 marginLeft: 5,
               }}>
               Logout
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => props.navigation.toggleDrawer()}
+          style={{paddingVertical: 15}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Icon name="sign-out-alt" size={16} />
+            <Text
+              style={{
+                fontSize: 16,
+                fontFamily: 'Roboto-Medium',
+                marginLeft: 5,
+              }}>
+              Leave
             </Text>
           </View>
         </TouchableOpacity>

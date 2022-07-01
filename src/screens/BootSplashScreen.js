@@ -19,15 +19,7 @@ function BootSplashScreen({navigation}) {
   });
 
   const initApp = async () => {
-    // You can uncomment this line to add a delay on app startup
-    // await fakeApiCallWithoutBadNetwork(3000);
     try {
-      // Animated.timing(scaleValue.current, {
-      //   useNativeDriver: true,
-      //   toValue: 1,
-      //   // toValue: Dimensions.get('window').height,
-      //   duration: 3000,
-      // }).start();
       Animated.timing(opacity, {
         useNativeDriver: true,
         toValue: 0,

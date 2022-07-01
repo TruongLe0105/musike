@@ -131,10 +131,6 @@ const PlayMusicScreen = ({navigation}) => {
     }
   };
 
-  // const [bootSplashIsVisible, setBootSplashIsVisible] = React.useState(true);
-  // const [bootSplashLogoIsLoaded, setBootSplashLogoIsLoaded] =
-  //   React.useState(false);
-  // const opacity = React.useRef(new Animated.Value(1));
   // const translateY = React.useRef(new Animated.Value(0));
 
   // const scaleValue = useRef(new Animated.Value(0));
@@ -144,40 +140,7 @@ const PlayMusicScreen = ({navigation}) => {
   //   outputRange: [0.95, 1.5, 1, 0.8, 1],
   // });
 
-  // const opacityXX = opacity?.current?.interpolate({
-  //   inputRange: [0, 0.25, 0.5, 0.6, 0.75, 1],
-  //   outputRange: [0, 0.2, 0.4, 0.6, 0.8, 1],
-  // });
-
-  // const init = async () => {
-  //   // You can uncomment this line to add a delay on app startup
-  //   // await fakeApiCallWithoutBadNetwork(3000);
-
-  //   try {
-  //     // Animated.timing(scaleValue.current, {
-  //     //   useNativeDriver: true,
-  //     //   toValue: 1,
-  //     //   // toValue: Dimensions.get('window').height,
-  //     //   duration: 3000,
-  //     // }).start();
-
-  //     Animated.timing(opacity.current, {
-  //       useNativeDriver: true,
-  //       toValue: 0,
-  //       duration: 3000,
-  //       easing: Easing.linear,
-  //     }).start(() => {
-  //       setBootSplashIsVisible(false);
-  //     });
-  //   } catch (error) {
-  //     setBootSplashIsVisible(false);
-  //   }
-
-  //   await RNBootSplash.hide();
-  // };
-
   useEffect(() => {
-    // SplashScreen.show();
     handleData();
 
     const backHandler = BackHandler.addEventListener(
@@ -198,12 +161,7 @@ const PlayMusicScreen = ({navigation}) => {
     run();
     showAlert();
 
-    // init();
-    // RNBootSplash.hide();
-
     return () => backHandler.remove();
-
-    // SplashScreen.hide();
   }, []);
 
   const showAlert = async () => {
@@ -214,41 +172,6 @@ const PlayMusicScreen = ({navigation}) => {
       storeData('ok');
     }
   };
-
-  // if (!isPlayerReady) {
-  //   return (
-  //     <SafeAreaView style={styles.screenContainer}>
-  //       {/* <ActivityIndicator /> */}
-  //       {bootSplashIsVisible && (
-  //         <Animated.View
-  //           style={[
-  //             StyleSheet.absoluteFill,
-  //             styles.bootsplash,
-  //             // {opacity: opacityXX},
-  //           ]}>
-  //           <Animated.Image
-  //             source={bootSplashLogo}
-  //             fadeDuration={2}
-  //             resizeMode="contain"
-  //             onLoadEnd={() => setBootSplashLogoIsLoaded(true)}
-  //             style={[
-  //               styles.logo,
-  //               {
-  //                 // transform: [
-  //                 //   {
-  //                 //     // translateY: translateY.current
-  //                 //     // scale: scaleXX,
-  //                 //   },
-  //                 // ],
-  //                 opacity: opacityXX,
-  //               },
-  //             ]}
-  //           />
-  //         </Animated.View>
-  //       )}
-  //     </SafeAreaView>
-  //   );
-  // }
 
   const onLink = async index => {
     console.log(LINK[index % 3]);
@@ -358,7 +281,7 @@ const PlayMusicScreen = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={toggleModalMenu}
+        onPress={() => navigation.toggleDrawer()}
         style={{
           width: 100,
           height: 100,
@@ -370,11 +293,6 @@ const PlayMusicScreen = ({navigation}) => {
         }}>
         <Icon name={'bars'} size={30} color="#FF344A" />
       </TouchableOpacity>
-      <MenuBar
-        navigation={navigation}
-        isVisible={openMenuBar}
-        toggle={toggleModalMenu}
-      />
 
       <ModalCategory isVisible={visibleModal} toggle={toggleModal} />
       <ModalFirst

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {Text} from 'react-native';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import PlayMusicScreen from './PlayMusicScreen';
@@ -17,11 +18,12 @@ function OnboardingScreen() {
       initialRouteName="PlayMusic"
       screenOptions={{
         headerShown: false,
-        drawerActiveBackgroundColor: 'black',
-        drawerActiveTintColor: 'white',
-        drawerInactiveTintColor: 'black',
+        drawerActiveBackgroundColor: '#aa18ea',
+        drawerInactiveTintColor: '#333',
+        drawerActiveTintColor: '#fff',
         drawerLabelStyle: {
           fontSize: 15,
+          marginLeft: -25,
           fontFamily: 'Roboto-Medium',
         },
       }}
@@ -29,38 +31,31 @@ function OnboardingScreen() {
       <Drawer.Screen
         name="PlayMusic"
         component={PlayMusicScreen}
-        options={{
-          drawerIcon: () => {
-            <Icon name="md-musical-notes" size={22} />;
-          },
-        }}
+        options={props => ({
+          drawerIcon: () => <Icon name="music" color={props.color} size={20} />,
+        })}
       />
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}
-        options={{
-          drawerIcon: ({color}) => {
-            <Icon name="user" size={14} color={color} />;
-          },
-        }}
+        options={({color}) => ({
+          drawerIcon: () => <Icon name="user" color={color} size={20} />,
+        })}
       />
       <Drawer.Screen
         name="Setting"
         component={SettingScreen}
-        options={{
-          drawerIcon: ({color}) => {
-            <Icon name="cog" size={14} color={color} />;
-          },
-        }}
+        options={({color}) => ({
+          drawerIcon: () => <Icon name="cog" color={color} size={20} />,
+        })}
+        onPress={() => console.log('123')}
       />
       <Drawer.Screen
         name="Home"
         component={HomeScreen}
-        options={{
-          drawerIcon: ({color}) => {
-            <Icon name="home" size={14} color={color} />;
-          },
-        }}
+        options={({color}) => ({
+          drawerIcon: () => <Icon name="home" color={color} size={20} />,
+        })}
       />
     </Drawer.Navigator>
   );
