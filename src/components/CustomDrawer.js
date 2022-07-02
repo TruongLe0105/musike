@@ -18,16 +18,16 @@ import avatar from '../assets/sources/avatar.png';
 
 function CustomDrawer(props) {
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <DrawerContentScrollView
         {...props}
         contentContainerStyle={{
           backgroundColor: 'black',
         }}>
-        <ImageBackground style={{padding: 25}}>
+        <ImageBackground style={{ padding: 25 }}>
           <Image
             source={avatar}
-            style={{width: 70, height: 70, marginBottom: 10}}
+            style={{ width: 70, height: 70, marginBottom: 10 }}
           />
           <Text
             style={{
@@ -38,14 +38,14 @@ function CustomDrawer(props) {
             }}>
             John Smith
           </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text style={{fontSize: 16, marginRight: 5, color: 'white'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ fontSize: 16, marginRight: 5, color: 'white' }}>
               100 coins
             </Text>
             <Icon name="coins" size={14} color="green" />
           </View>
         </ImageBackground>
-        <View style={{backgroundColor: '#FFF', flex: 1}}>
+        <View style={{ backgroundColor: '#FFF', flex: 1 }}>
           <DrawerItemList {...props} />
         </View>
       </DrawerContentScrollView>
@@ -56,8 +56,8 @@ function CustomDrawer(props) {
           borderTopColor: '#ccc',
           borderTopWidth: 1,
         }}>
-        <TouchableOpacity style={{paddingVertical: 15}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <TouchableOpacity style={{ paddingVertical: 15 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon name="music" size={16} />
             <Text
               style={{
@@ -69,8 +69,11 @@ function CustomDrawer(props) {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={{paddingVertical: 15}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate("Login")}
+          style={{ paddingVertical: 15 }}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon name="sign-out-alt" size={16} />
             <Text
               style={{
@@ -84,8 +87,8 @@ function CustomDrawer(props) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => props.navigation.toggleDrawer()}
-          style={{paddingVertical: 15}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          style={{ paddingVertical: 15 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon name="sign-out-alt" size={16} />
             <Text
               style={{

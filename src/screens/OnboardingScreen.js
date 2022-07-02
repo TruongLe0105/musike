@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import PlayMusicScreen from './PlayMusicScreen';
 import ProfileScreen from './ProfileScreen';
 import SettingScreen from './SettingScreen';
@@ -31,30 +31,30 @@ function OnboardingScreen() {
       <Drawer.Screen
         name="PlayMusic"
         component={PlayMusicScreen}
-        options={props => ({
-          drawerIcon: () => <Icon name="music" color={props.color} size={20} />,
+        options={() => ({
+          drawerIcon: ({ color }) => <Icon name="music" color={color} size={20} />,
         })}
       />
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}
-        options={({color}) => ({
-          drawerIcon: () => <Icon name="user" color={color} size={20} />,
+        options={() => ({
+          drawerIcon: ({ color }) => <Icon name="user" color={color} size={20} />,
         })}
       />
       <Drawer.Screen
         name="Setting"
         component={SettingScreen}
-        options={({color}) => ({
-          drawerIcon: () => <Icon name="cog" color={color} size={20} />,
+        options={() => ({
+          drawerIcon: ({ color }) => <Icon name="cog" color={color} size={20} />,
         })}
         onPress={() => console.log('123')}
       />
       <Drawer.Screen
         name="Home"
         component={HomeScreen}
-        options={({color}) => ({
-          drawerIcon: () => <Icon name="home" color={color} size={20} />,
+        options={() => ({
+          drawerIcon: ({ color }) => <Icon name="home" color={color} size={20} />,
         })}
       />
     </Drawer.Navigator>
