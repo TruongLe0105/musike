@@ -40,8 +40,8 @@ import ModalCategory from '../components/modals/Modal';
 
 import Time from '../components/Time';
 
-import MenuBar from '../components/modals/MenuBar';
 import ModalFirst from '../components/modals/ModalAward';
+import IconBar from '../components/modals/IconBar';
 
 const IMAGE = [
   'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/a.jpg',
@@ -280,19 +280,7 @@ const PlayMusicScreen = ({navigation}) => {
         <Icon name={'music'} size={30} color="#FF344A" />
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.toggleDrawer()}
-        style={{
-          width: 100,
-          height: 100,
-          position: 'absolute',
-          top: 20,
-          left: 20,
-          borderRadius: 5,
-          zIndex: 100,
-        }}>
-        <Icon name={'bars'} size={30} color="#FF344A" />
-      </TouchableOpacity>
+      <IconBar navigation={navigation} />
 
       <ModalCategory isVisible={visibleModal} toggle={toggleModal} />
       <ModalFirst
@@ -307,34 +295,6 @@ const PlayMusicScreen = ({navigation}) => {
           storeData('ok');
         }}
       />
-
-      {/* {bootSplashIsVisible && (
-        <Animated.View
-          style={[
-            StyleSheet.absoluteFill,
-            styles.bootsplash,
-            // {opacity: opacityXX},
-          ]}>
-          <Animated.Image
-            source={bootSplashLogo}
-            fadeDuration={2}
-            resizeMode="contain"
-            onLoadEnd={() => setBootSplashLogoIsLoaded(true)}
-            style={[
-              styles.logo,
-              {
-                transform: [
-                  {
-                    // translateY: translateY.current
-                    // scale: scaleXX,
-                  },
-                ],
-                opacity: opacityXX,
-              },
-            ]}
-          />
-        </Animated.View>
-      )} */}
 
       <ModalSecond isVisible={isShowAward} onOk={() => setShowAward(false)} />
     </SafeAreaView>

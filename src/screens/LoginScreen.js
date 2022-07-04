@@ -75,8 +75,8 @@ function LoginMusike({ navigation }) {
       loggedAccount(true);
       navigation.navigate('Onboarding');
     } else {
-      checkErrorMessageEmail();
-      checkErrorMessagePassword();
+      isValidEmail(email) ? '' : checkErrorMessageEmail();
+      isValidPassword(password) ? '' : checkErrorMessagePassword();
     }
   };
 
