@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import PlayMusicScreen from './PlayMusicScreen';
 import ProfileScreen from './ProfileScreen';
 import SettingScreen from './SettingScreen';
