@@ -5,12 +5,14 @@ import {
   Text,
   ImageBackground,
   ScrollView,
+  FlatList,
+  ListViewBase,
 } from 'react-native';
-import ImageTitle from '../components/home/ImageTitle';
 import SearchInput from '../components/SearchInput';
 import background from '../assets/sources/background_home.png';
-import IconBar from '../components/modals/IconBar';
 import Genres from '../components/home/Genres';
+import BannerHome from '../components/home/BannerHome';
+import Charts from '../components/home/Charts';
 
 function HomeScreen({navigation}) {
   return (
@@ -18,10 +20,11 @@ function HomeScreen({navigation}) {
       <ImageBackground
         source={background}
         style={{height: '100%', width: '100%'}}>
-        <View style={{height: 1200}}>
+        <View>
           <SearchInput navigation={navigation} />
-          <ImageTitle />
+          <BannerHome />
           <Genres />
+          <Charts />
         </View>
       </ImageBackground>
     </ScrollView>

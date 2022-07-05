@@ -4,7 +4,7 @@ import unsplash1 from '../../assets/sources/unplashs_image/unsplash1.png';
 import unsplash2 from '../../assets/sources/unplashs_image/unsplash2.png';
 import unsplash3 from '../../assets/sources/unplashs_image/unsplash3.png';
 
-function ImageTitle() {
+function BannerHome() {
   return (
     <View style={styles.container}>
       <View style={styles.image1}>
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImageTitle;
+export default BannerHome;
