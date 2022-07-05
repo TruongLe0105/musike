@@ -31,6 +31,8 @@ const LIST = [
 
 function Genres() {
   const [action, setAction] = useState(0);
+  const [firstNum, setFirstNum] = useState(0);
+  const [lastNum, setLastNum] = useState(4);
 
   const renderItem = ({item, index}) => {
     return (
@@ -45,6 +47,22 @@ function Genres() {
     );
   };
 
+  const handlePrev = () => {
+    // firstNum >= 4 ? setFirstNum(firstNum - 4) : '';
+    // lastNum > 4 ? setLastNum(lastNum - 4) : '';
+
+    setAction(null);
+  };
+
+  const handleNext = () => {
+    // firstNum >= 0 && firstNum < LIST.length - 4
+    //   ? setFirstNum(firstNum + 4)
+    //   : '';
+    // lastNum < LIST.length ? setLastNum(lastNum + 4) : '';
+    LIST.slice(0, 4);
+    setAction(null);
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.boxTitle}>
@@ -52,18 +70,26 @@ function Genres() {
         <Icon name="angle-right" color="white" size={16} />
       </TouchableOpacity>
       <View style={styles.wrapperGenres}>
-        <TouchableOpacity style={styles.arrowIcon}>
-          <Icon name="caret-left" color="white" size={25} />
-        </TouchableOpacity>
-        <FlatList
-          contentContainerStyle={{marginHorizontal: 30}}
-          data={LIST}
-          renderItem={renderItem}
-          horizontal={true}
-        />
-        <TouchableOpacity style={styles.arrowIcon}>
-          <Icon name="caret-right" color="white" size={25} />
-        </TouchableOpacity>
+        {firstNum > 0 && (
+          <TouchableOpacity onPress={handlePrev} style={styles.arrowIconLeft}>
+            <Icon name="caret-left" color="white" size={25} />
+          </TouchableOpacity>
+        )}
+        <View>
+          <FlatList
+            data={LIST}
+            renderItem={renderItem}
+            horizontal={true}
+            // onViewableItemsChanged={({viewableItems}) => {
+            //   viewableItems = [{index: 4}, {index: 5}];
+            // }}
+          />
+        </View>
+        {lastNum < LIST.length && (
+          <TouchableOpacity onPress={handleNext} style={styles.arrowIconRight}>
+            <Icon name="caret-right" color="white" size={30} />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -76,13 +102,13 @@ const styles = StyleSheet.create({
   },
   wrapperGenres: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   boxTitle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
+    // marginBottom: 12,
   },
   title: {
     color: '#FFFFFF',
@@ -95,7 +121,7 @@ const styles = StyleSheet.create({
     borderColor: '#FF344A',
     borrderWidth: 0.73,
     borderRadius: 40,
-    marginHorizontal: 5,
+    margin: 10,
     width: 70,
     height: 70,
     flexDirection: 'row',
@@ -107,7 +133,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.73,
     borderColor: '#FF344A',
     borderRadius: 50,
-    marginHorizontal: 5,
+    margin: 10,
     width: 70,
     height: 70,
     flexDirection: 'row',
@@ -121,9 +147,6 @@ const styles = StyleSheet.create({
   genre: {
     color: '#FF4060',
     fontWeight: '400',
-  },
-  arrowIcon: {
-    // marginRight: 10,
   },
 });
 

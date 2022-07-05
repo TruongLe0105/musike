@@ -22,17 +22,64 @@ import image8 from '../../assets/sources/NewNFTs2/image9.png';
 import image9 from '../../assets/sources/NewNFTs2/image8.png';
 import image10 from '../../assets/sources/NewNFTs2/image9.png';
 
-const LIST1 = [image1, image2, image3];
-const LIST2 = [image4, image5, image6, image7];
-const LIST3 = [image8, image9, image10];
+const LIST1 = [
+  {
+    image: image1,
+    name: 'Urgent Siege',
+  },
+  {
+    image: image2,
+    name: 'Urgent Siege',
+  },
+  {
+    image: image3,
+    name: 'Urgent Siege',
+  },
+];
+const LIST2 = [
+  {
+    image: image4,
+    title: 'Payphone - Maroon 5',
+  },
+  {
+    image: image5,
+    title: 'Lover - Taylor Swift',
+  },
+  {
+    image: image6,
+    title: 'Yummy - Hustin Bieber',
+  },
+  {
+    image: image7,
+    title: 'Up All Night - ',
+  },
+];
+const LIST3 = [
+  {
+    image: image8,
+    name: 'Breathe',
+  },
+  {
+    image: image9,
+    name: 'Shape of Water',
+  },
+  {
+    image: image10,
+    name: 'Superorgan',
+  },
+];
 
 function Charts() {
   const TopTrend = ({data}) => {
     const itemNewNFTs = ({item, index}) => {
       return (
-        <TouchableOpacity style={styles.wrapperImage} key={index}>
-          <Image source={item} style={styles.image} />
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity style={styles.wrapperImage} key={index}>
+            <Image source={item.image} />
+          </TouchableOpacity>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.textDown}>Dammed Anthem</Text>
+        </View>
       );
     };
 
@@ -55,9 +102,12 @@ function Charts() {
   const TopArtists = () => {
     const ListArtists = ({item, index}) => {
       return (
-        <TouchableOpacity style={styles.wrapperImage} key={index}>
-          <Image source={item} style={styles.image} />
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity style={styles.wrapperImage} key={index}>
+            <Image source={item.image} />
+          </TouchableOpacity>
+          <Text style={styles.singer}>{item.title}</Text>
+        </View>
       );
     };
 
@@ -108,6 +158,25 @@ const styles = StyleSheet.create({
   wrapperImage: {
     marginRight: 10,
     borderRadius: 10,
+  },
+  name: {
+    color: '#FFFFFF',
+    fontFamily: 'Open Sans',
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  textDown: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontSize: 10,
+    fontFamily: 'Open Sans',
+    fontWeight: '400',
+  },
+  singer: {
+    fontWeight: '400',
+    color: '#999999',
+    fontSize: 9,
+    fontFamily: 'Inter',
   },
 });
 
