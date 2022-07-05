@@ -10,6 +10,7 @@ import BootSplashScreen from '../../screens/BootSplashScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
 import LogoutScreen from '../../screens/LogoutScreen';
 import SearchScreen from '../../screens/SearchScreen';
+import Categories from '../../screens/Categories';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,6 +20,7 @@ function AppStack() {
     <Stack.Navigator
       initialRouteName="BootSplash"
       screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Categories" component={Categories} />
       <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen name="BootSplash" component={BootSplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
