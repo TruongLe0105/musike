@@ -57,10 +57,10 @@ const HandleArtistList = ({item, index}) => {
   );
 };
 
-const SearchScreen = () => {
+const SearchScreen = ({navigation}) => {
   return (
     <ScrollView style={{paddingLeft: 15, backgroundColor: '#000'}}>
-      <SearchInput />
+      <SearchInput navigation={navigation} />
       <FlatList
         style={{flexDirection: 'row', marginTop: 40}}
         horizontal
