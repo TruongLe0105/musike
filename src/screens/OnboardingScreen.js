@@ -9,6 +9,7 @@ import ProfileScreen from './ProfileScreen';
 import SettingScreen from './SettingScreen';
 import HomeScreen from './HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
+import SearchScreen from './SearchScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -58,6 +59,13 @@ function OnboardingScreen() {
         options={() => ({
           drawerIcon: ({color}) => <Icon name="cog" color={color} size={20} />,
         })}
+      />
+      <Drawer.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          drawerItemStyle: {display: 'none'},
+        }}
       />
     </Drawer.Navigator>
   );

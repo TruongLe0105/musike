@@ -5,9 +5,8 @@ import {
   Text,
   ImageBackground,
   ScrollView,
-  FlatList,
-  ListViewBase,
 } from 'react-native';
+
 import SearchInput from '../components/SearchInput';
 import background from '../assets/sources/background_home.png';
 import Genres from '../components/home/Genres';
@@ -22,8 +21,9 @@ function HomeScreen({navigation}) {
         style={{height: '100%', width: '100%'}}>
         <View>
           <SearchInput navigation={navigation} />
+          {/* <Header navigation={navigation} /> */}
           <BannerHome />
-          <Genres />
+          <Genres navigation={navigation} />
           <Charts />
         </View>
       </ImageBackground>
