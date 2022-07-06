@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Image, Text, View} from 'react-native';
+import {FlatList, Image, Text, View, StyleSheet} from 'react-native';
 import FeatureImg from '../assets/resources/Search_Feature.png';
 import NFTS1 from '../assets/sources/NewNFTs3/NFTS1.png';
 import NFTS2 from '../assets/sources/NewNFTs3/NFTS2.png';
@@ -17,14 +17,7 @@ const IMAGENFTS2 = [NFTS4, NFTS3, NFTS2, NFTS1, NFTS4];
 
 const ListItem = ({item, index}) => {
   return (
-    <View
-      key={index}
-      style={{
-        width: 370,
-        height: 220,
-        borderRadius: 10,
-        marginRight: 10,
-      }}>
+    <View key={index} style={styles.slides}>
       {item && (
         <Image
           source={item}
@@ -35,24 +28,8 @@ const ListItem = ({item, index}) => {
           }}
         />
       )}
-      <View
-        style={{
-          paddingLeft: 15,
-          width: '100%',
-          height: '100%',
-          paddingVertical: 20,
-        }}>
-        <View>
-          <Text
-            style={{
-              fontSize: 25,
-              color: 'white',
-              fontWeight: 'bold',
-              letterSpacing: 1,
-            }}>
-            Featured Song
-          </Text>
-        </View>
+      <View style={styles.slideDesc}>
+        <Text style={styles.slideTitle}>Featured Song</Text>
         <View style={{marginTop: 'auto'}}>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>
             Follow The Leader ft.jennifer
@@ -75,22 +52,14 @@ const HandleArtistList = ({item, index}) => {
         marginRight: 10,
       }}>
       {item && <Image source={item.image} style={{width: 102, height: 102}} />}
-      <Text
-        style={{
-          color: 'white',
-          textAlign: 'center',
-          fontSize: 11,
-          opacity: 0.5,
-        }}>
-        {item.description}
-      </Text>
+      <Text style={styles.artistInfo}>{item.description}</Text>
     </View>
   );
 };
 
 const SearchScreen = () => {
   return (
-    <ScrollView style={{paddingLeft: 20, backgroundColor: '#000'}}>
+    <ScrollView style={{paddingLeft: 15, backgroundColor: '#000'}}>
       <SearchInput />
       <FlatList
         style={{flexDirection: 'row', marginTop: 40}}
@@ -102,15 +71,7 @@ const SearchScreen = () => {
       <SearchScreenItem data={IMAGENFTS} />
       <View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              paddingVertical: 10,
-              marginRight: 5,
-            }}>
-            Top Artists
-          </Text>
+          <Text style={styles.slideTitle}>Top Artists</Text>
           <Icon name="angle-right" color="white" size={20} />
         </View>
         <FlatList horizontal data={ArtistList} renderItem={HandleArtistList} />
@@ -121,3 +82,31 @@ const SearchScreen = () => {
 };
 
 export default SearchScreen;
+
+const styles = StyleSheet.create({
+  artistTitle: {
+    color: 'white',
+    fontSize: 20,
+    paddingVertical: 10,
+    marginRight: 5,
+  },
+  artistInfo: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 11,
+    opacity: 0.5,
+  },
+  slideTitle: {
+    fontSize: 25,
+    color: 'white',
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  slideDesc: {
+    paddingLeft: 15,
+    width: '100%',
+    height: '100%',
+    paddingVertical: 20,
+  },
+  slides: {width: 370, height: 220, borderRadius: 10, marginRight: 10},
+});
