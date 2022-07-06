@@ -22,7 +22,6 @@ function SearchInput({navigation}) {
           placeholderTextColor={'#979797'}
           value={value}
           onChangeText={text => handleChange(text)}
-          onPressIn={() => navigation.navigate('Categories')}
         />
       </View>
     </View>
