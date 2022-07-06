@@ -18,9 +18,14 @@ import Travis from '../../assets/sources/list_song/Travis.png';
 import Vincent from '../../assets/sources/list_song/Vincent.png';
 import rising from '../../assets/sources/list_song/88rising.png';
 import background from '../../assets/sources/list_song/background.png';
+import avatar from '../../assets/sources/Catergories/avatar.png';
+import coolicon from '../../assets/sources/list_song/coolicon.png';
+
+import HeaderTab from '../../components/HeaderTab/HeaderTab';
 
 function NextSongScreen({navigation}) {
   const [action, setAction] = useState(2);
+  const [switchOn, setSwitchOn] = useState(false);
 
   const LIST = [
     {
@@ -63,11 +68,11 @@ function NextSongScreen({navigation}) {
   const renderSongs = ({item, index}) => {
     const handlePress = () => {
       setAction(index);
-      // navigation.navigate('PlayMusic');
+      navigation.navigate('PlayMusic');
     };
 
     return (
-      <TouchableOpacity style={styles.itemContainer} onPress={handlePress}>
+      <TouchableOpacity onPress={handlePress}>
         <Image
           style={action === index ? styles.viewImage : styles.hideImage}
           source={background}
@@ -75,14 +80,16 @@ function NextSongScreen({navigation}) {
         <View key={index} style={styles.item}>
           <View style={styles.itemLeft}>
             <Image height="100%" source={item.image} />
-            <View style={{height: '100%'}}>
+            <View style={styles.content}>
               <Text style={styles.song}>{item.song}</Text>
               <Text style={styles.text}>{item.name}</Text>
             </View>
           </View>
           <View style={styles.itemRight}>
             <Text style={styles.text}>time</Text>
-            <Icon />
+            <TouchableOpacity style={styles.option}>
+              <Image style={styles.ellipse} source={coolicon} />
+            </TouchableOpacity>
           </View>
         </View>
       </TouchableOpacity>
@@ -91,9 +98,27 @@ function NextSongScreen({navigation}) {
 
   return (
     <View style={styles.wrapperScreen}>
+      <View style={styles.heading}>
+        <HeaderTab title="Next Song" avatar={avatar} />
+      </View>
       <View style={styles.autoplay}>
         <Text style={styles.title}>Autoplay</Text>
-        <Text style={styles.title}>Here!</Text>
+        {switchOn && (
+          <TouchableOpacity
+            onPress={() => setSwitchOn(false)}
+            style={styles.switch}>
+            <Text style={styles.switchOn}>On</Text>
+            <Text style={styles.circleOn} />
+          </TouchableOpacity>
+        )}
+        {!switchOn && (
+          <TouchableOpacity
+            onPress={() => setSwitchOn(true)}
+            style={styles.switch}>
+            <Text style={styles.switchOn}>Off</Text>
+            <Text style={styles.circleOff} />
+          </TouchableOpacity>
+        )}
       </View>
       <FlatList
         contentContainerStyle={styles.container}

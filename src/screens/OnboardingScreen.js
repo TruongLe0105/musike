@@ -4,12 +4,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Text} from 'react-native';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import PlayMusicScreen from './PlayMusicScreen';
 import ProfileScreen from './ProfileScreen';
 import SettingScreen from './SettingScreen';
 import HomeScreen from './HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import SearchScreen from './SearchScreen';
+import PlayMusicScreen from './PlayMusic/PlayMusicScreen';
 
 const Drawer = createDrawerNavigator();
 

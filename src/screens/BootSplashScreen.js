@@ -6,7 +6,7 @@ import RNBootSplash from 'react-native-bootsplash';
 
 import bootSplash from '../assets/sources/bootSplash.png';
 import bootSplashLogo from '../assets/sources/logo.png';
-import styles from '../HomeStyle';
+import styles from './PlayMusic/PlayMusicStyle';
 
 function BootSplashScreen({navigation}) {
   const [bootSplashIsVisible, setBootSplashIsVisible] = useState(true);
