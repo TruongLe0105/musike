@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  wrapHeader: {
+    paddingVertical: 35,
+  },
   listWrap: {
     flexWrap: 'wrap',
     flexDirection: 'row',

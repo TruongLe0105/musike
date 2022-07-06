@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: 58,
   },
   avtBorder: {
     position: 'relative',
@@ -22,6 +23,11 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 47,
     height: 47,
+  },
+  logo: {
+    resizeMode: 'contain',
+    width: 101,
+    height: 42,
   },
 });
 

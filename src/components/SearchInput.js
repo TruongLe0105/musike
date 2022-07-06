@@ -20,7 +20,6 @@ function SearchInput({navigation, editable}) {
   const handlePress = () => {
     !editable ? navigation.navigate('Search') : '';
   };
-
   return (
     <View>
       <IconBar navigation={navigation} />
