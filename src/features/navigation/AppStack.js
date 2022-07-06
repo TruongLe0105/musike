@@ -10,7 +10,7 @@ import BootSplashScreen from '../../screens/BootSplashScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
 import LogoutScreen from '../../screens/LogoutScreen';
 import SearchScreen from '../../screens/SearchScreen';
-import Categories from '../../screens/Categories';
+import Categories from '../../screens/Categories/Categories';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
