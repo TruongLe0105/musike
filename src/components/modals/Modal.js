@@ -3,22 +3,22 @@ import React from 'react';
 import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import Pop from './src/assets/resources/Pop.jpg';
-import Hiphop from './src/assets/resources/hiphop.jpg';
-import Rock from './src/assets/resources/Rock.jpg';
-import Rhythm from './src/assets/resources/R_B.jpg';
-import Reggae from './src/assets/resources/Reggae.png';
-import Country from './src/assets/resources/country.jpg';
-import Funk from './src/assets/resources/Funk.jpg';
-import Folk from './src/assets/resources/Folk.jpg';
-import Middle from './src/assets/resources/middle-easternMusic.jpg';
-import Jazz from './src/assets/resources/JazzMusic.jpg';
-import Disco from './src/assets/resources/Disco.jpg';
-import Classical from './src/assets/resources/ClassicalMusic.jpg';
-import Electronic from './src/assets/resources/ElectronicMusic.jpg';
-import Latin from './src/assets/resources/LatinAmericaMusic.png';
-import Blues from './src/assets/resources/BluesMusic.jpg';
-import Children from './src/assets/resources/Musicforchild.jpg';
+import Pop from '../../assets/resources/Pop.jpg';
+import Hiphop from '../../assets/resources/hiphop.jpg';
+import Rock from '../../assets/resources/Rock.jpg';
+import Rhythm from '../../assets/resources/R_B.jpg';
+import Reggae from '../../assets/resources/Reggae.png';
+import Country from '../../assets/resources/country.jpg';
+import Funk from '../../assets/resources/Funk.jpg';
+import Folk from '../../assets/resources/Folk.jpg';
+import Middle from '../../assets/resources/middle-easternMusic.jpg';
+import Jazz from '../../assets/resources/JazzMusic.jpg';
+import Disco from '../../assets/resources/Disco.jpg';
+import Classical from '../../assets/resources/ClassicalMusic.jpg';
+import Electronic from '../../assets/resources/ElectronicMusic.jpg';
+import Latin from '../../assets/resources/LatinAmericaMusic.png';
+import Blues from '../../assets/resources/BluesMusic.jpg';
+import Children from '../../assets/resources/Musicforchild.jpg';
 
 const LIST = [
   'Pop',
@@ -151,8 +151,8 @@ function WrapperComponent({isVisible, toggle}) {
                   // alignItems: 'flex-end',
                   justifyContent: 'space-between',
                   padding: 15,
-                  position:'relative',
-                  overflow:'hidden'
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
                 onPress={toggle}>
                 <Image
@@ -162,7 +162,6 @@ function WrapperComponent({isVisible, toggle}) {
                     position: 'absolute',
                     top: 0,
                     right: 0,
-
                   }}
                   blurRadius={8}
                   resizeMode="cover"
@@ -172,7 +171,14 @@ function WrapperComponent({isVisible, toggle}) {
                   <Icon name="music" size={30} color="#aaa" />
                 </View>
 
-                <Text style={{color: 'white', textAlign: 'right', fontWeight: '800'}}>{item}</Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    textAlign: 'right',
+                    fontWeight: '800',
+                  }}>
+                  {item}
+                </Text>
               </TouchableOpacity>
             ))}
           </View>

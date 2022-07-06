@@ -17,7 +17,7 @@ import {
 
 import {usePlaybackState, State} from 'react-native-track-player';
 
-import {useCurrentTrack} from './src/hooks';
+import {useCurrentTrack} from '../hooks';
 
 const IS_IOS = Platform.OS === 'ios';
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
@@ -121,7 +121,13 @@ const App = () => {
         </View>
       </View>
       <View
-        style={{width: '100%', justifyContent: 'center', marginVertical: 10, alignItems: 'flex-start', marginLeft: 10}}>
+        style={{
+          width: '100%',
+          justifyContent: 'center',
+          marginVertical: 10,
+          alignItems: 'flex-start',
+          marginLeft: 10,
+        }}>
         <View
           style={{
             width: '20%',
@@ -132,11 +138,7 @@ const App = () => {
       </View>
 
       <View>
-        <View
-          style={[
-            styles.row,
-            
-          ]}>
+        <View style={[styles.row]}>
           <Text style={[styles.title, {fontSize: 18}]}>Total Earn: </Text>
           <Text style={styles.subTitle}>{`${(time * 0.05).toFixed(
             2,

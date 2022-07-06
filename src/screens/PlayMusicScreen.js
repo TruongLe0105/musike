@@ -1,0 +1,304 @@
+import React, {useState, useEffect, useRef} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import TrackPlayer, {usePlaybackState, State} from 'react-native-track-player';
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  View,
+  ActivityIndicator,
+  Text,
+  ScrollView,
+  Dimensions,
+  Platform,
+  Image,
+  TouchableOpacity,
+  Linking,
+  Alert,
+  BackHandler,
+  Animated,
+  Easing,
+} from 'react-native';
+import Toast from '@rimiti/react-native-toastify';
+
+import ModalSecond from '../components/modals/ModalAward';
+import styles from '../HomeStyle';
+
+// import RNBootSplash from 'react-native-bootsplash';
+
+import Carousel from 'react-native-snap-carousel';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import {PlayerControls, Progress, TrackInfo} from '../components';
+import {SetupService, QueueInitalTracksService} from '../services';
+import {useCurrentTrack} from '../hooks';
+
+// import ModalFirst from '../components/m';
+
+import ModalCategory from '../components/modals/Modal';
+
+import Time from '../components/Time';
+
+import ModalFirst from '../components/modals/ModalAward';
+import IconBar from '../components/modals/IconBar';
+
+const IMAGE = [
+  'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/a.jpg',
+  'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/b.jpg',
+  'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/c.jpg',
+];
+
+const LINK = [
+  'https://bingo.family/',
+  'https://creaturehunters.world/',
+  'https://nftmarble.games/',
+];
+
+const IS_IOS = Platform.OS === 'ios';
+const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
+
+function wp(percentage) {
+  const value = (percentage * viewportWidth) / 100;
+  return Math.round(value);
+}
+
+const slideHeight = viewportHeight * 0.36;
+const slideWidth = wp(100);
+const itemHorizontalMargin = wp(2);
+
+export const sliderWidth = viewportWidth;
+export const itemWidth = slideWidth + itemHorizontalMargin * 2;
+
+const PlayMusicScreen = ({navigation}) => {
+  const track = useCurrentTrack();
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
+  const [temp, setTemp] = useState({});
+
+  const [isShowAward, setShowAward] = useState(false);
+
+  const [isShowFirstModal, setModalFirst] = useState(false);
+  let [refT, setRefT] = useState(null);
+  const [visibleModal, setVisibleModal] = useState(false);
+  const [openMenuBar, setOpenMenuBar] = useState(false);
+
+  const toggleModal = () => {
+    setVisibleModal(!visibleModal);
+  };
+
+  const toggleModalMenu = () => {
+    setOpenMenuBar(!openMenuBar);
+  };
+
+  const handleData = async () => {
+    const {
+      startTime = 0,
+      isPlayTemp,
+      pointNow,
+      totalPoint,
+      tempTime = 0,
+    } = (await getData('test')) || {};
+
+    setTemp({
+      startTime,
+      isPlayTemp,
+      pointNow,
+      totalPoint,
+      tempTime,
+    });
+  };
+
+  const _carousel = useRef(null);
+
+  const storeData = async value => {
+    try {
+      await AsyncStorage.setItem('isFirst', JSON.stringify(value));
+    } catch (e) {
+      // saving error
+    }
+  };
+
+  const getData = async name => {
+    try {
+      const value = await AsyncStorage.getItem(name || 'test');
+      if (value !== null) {
+        // value previously stored
+        return JSON.parse(value);
+      }
+      return null;
+    } catch (e) {
+      // error reading value
+    }
+  };
+
+  // const translateY = React.useRef(new Animated.Value(0));
+
+  // const scaleValue = useRef(new Animated.Value(0));
+
+  // const scaleXX = scaleValue?.current?.interpolate({
+  //   inputRange: [0, 0.25, 0.5, 0.75, 1],
+  //   outputRange: [0.95, 1.5, 1, 0.8, 1],
+  // });
+
+  useEffect(() => {
+    handleData();
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => true,
+    );
+
+    async function run() {
+      const isSetup = await SetupService();
+      setIsPlayerReady(isSetup);
+
+      const queue = await TrackPlayer.getQueue();
+      if (isSetup && queue.length <= 0) {
+        await QueueInitalTracksService();
+      }
+    }
+
+    run();
+    showAlert();
+
+    return () => backHandler.remove();
+  }, []);
+
+  const showAlert = async () => {
+    const value = await AsyncStorage.getItem('isFirst');
+    if (!value) {
+      setModalFirst(true);
+    } else {
+      storeData('ok');
+    }
+  };
+
+  const onLink = async index => {
+    console.log(LINK[index % 3]);
+    await Linking.openURL(LINK[index % 3]);
+  };
+
+  const renderItem = data => {
+    return (
+      <TouchableOpacity
+        style={{width: '100%', height: 100}}
+        onPress={() => onLink(data.index)}>
+        <Image
+          onPress={() => onLink(data.index)}
+          source={{uri: data.item}}
+          style={{width: '100%', height: 100}}
+        />
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    <SafeAreaView style={styles.screenContainer}>
+      <StatusBar barStyle={'light-content'} />
+      <Toast
+        ref={React.useRef()}
+        style={{
+          backgroundColor: '#ffffffcf',
+          paddingVertical: 25,
+          fontSize: 14,
+          paddingHorizontal: 25,
+          textAlign: 'center',
+          borderRadius: 15,
+        }}
+        textStyle={{
+          textAlign: 'center',
+          color: '#FF344A',
+          fontSize: 18,
+        }}
+        position="top"
+      />
+      <Image
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          top: 0,
+          bottom: 0,
+        }}
+        source={{
+          uri: `${
+            track?.artwork ||
+            'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/Mar_diffuse.png'
+          }`,
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          top: 0,
+          bottom: 0,
+          backgroundColor: '#000000ab',
+        }}
+      />
+
+      <ScrollView
+        style={{width: '100%', height: '100%'}}
+        contentContainerStyle={{}}>
+        <View style={{flex: 1}}>
+          <View style={styles.contentContainer}>
+            <TrackInfo track={track} />
+            <Progress />
+          </View>
+          <View style={styles.actionRowContainer}>
+            <PlayerControls
+              refToast={refT}
+              showReward={() => setShowAward(true)}
+            />
+          </View>
+          <Time />
+        </View>
+      </ScrollView>
+      <View style={{width: '100%'}}>
+        <Carousel
+          ref={_carousel}
+          data={IMAGE}
+          renderItem={renderItem}
+          sliderWidth={sliderWidth}
+          itemWidth={itemWidth}
+          autoplay={true}
+          loop={true}
+        />
+      </View>
+      <TouchableOpacity
+        onPress={toggleModal}
+        style={{
+          width: 100,
+          height: 100,
+          position: 'absolute',
+          top: 20,
+          right: -50,
+          borderRadius: 5,
+          zIndex: 100,
+        }}>
+        <Icon name={'music'} size={30} color="#FF344A" />
+      </TouchableOpacity>
+
+      <IconBar navigation={navigation} />
+
+      <ModalCategory isVisible={visibleModal} toggle={toggleModal} />
+      <ModalFirst
+        isVisible={isShowFirstModal}
+        onClose={() => {
+          setModalFirst(false);
+          storeData('ok');
+        }}
+        onOk={() => {
+          setModalFirst(false);
+          TrackPlayer.play();
+          storeData('ok');
+        }}
+      />
+
+      <ModalSecond isVisible={isShowAward} onOk={() => setShowAward(false)} />
+    </SafeAreaView>
+  );
+};
+
+export default PlayMusicScreen;

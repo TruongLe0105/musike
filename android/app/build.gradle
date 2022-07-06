@@ -121,6 +121,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+
 /**
  * Architectures to build native code for.
  */
@@ -263,6 +264,8 @@ dependencies {
     implementation 'com.facebook.fresco:animated-gif:2.0.0'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation project(':react-native-svg')
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules

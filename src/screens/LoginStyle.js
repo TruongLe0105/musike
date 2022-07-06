@@ -1,0 +1,92 @@
+import {StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
+  body: {
+    height: '100%',
+    backgroundColor: 'orange',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  wrapper: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    backgroundColor: '#0F0000',
+    padding: 25,
+    paddingBottom: 10,
+    width: '100%',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+  },
+  image: {
+    position: 'absolute',
+    // top: 30,
+    top: 0,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  input: {
+    color: '#FFFFFF',
+    borderRadius: 8,
+    backgroundColor: '#362F2D',
+    opacity: 0.5,
+    paddingLeft: 20,
+    lineHeight: 17,
+    maxHeight: 42,
+  },
+  forgotPassWord: {
+    fontSize: 14,
+    lineHeight: 17,
+    fontWeight: '500',
+    textDecorationLine: 'underline',
+    textAlign: 'right',
+  },
+  icon: {
+    backgroundColor: 'white',
+    color: 'black',
+    borderRadius: 25,
+    width: 24,
+    height: 24,
+    textAlign: 'center',
+    fontSize: 16,
+    padding: 4,
+  },
+  loginBtn: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 100,
+    borderRadius: 8,
+    maxHeight: 39,
+  },
+  textBtn: {
+    fontFamily: 'Inter',
+    fontWeight: '700',
+    lineHeight: 19,
+    fontSize: 16,
+    color: 'white',
+    marginLeft: 10,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  question: {
+    fontWeight: '500',
+    fontSize: 16,
+    lineHeight: 19,
+    marginRight: 5,
+  },
+  register: {
+    color: '#FF344A',
+    fontWeight: '500',
+    fontSize: 16,
+    lineHeight: 19,
+  },
+});
+
+export default styles;
