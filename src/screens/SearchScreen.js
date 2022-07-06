@@ -11,6 +11,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {ArtistList} from '../utilies/MockData';
 import SearchInput from '../components/SearchInput';
 
+
 const IMAGE = [FeatureImg, FeatureImg, FeatureImg, FeatureImg];
 const IMAGENFTS = [NFTS1, NFTS2, NFTS3, NFTS4, NFTS1];
 const IMAGENFTS2 = [NFTS4, NFTS3, NFTS2, NFTS1, NFTS4];
