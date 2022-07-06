@@ -29,15 +29,20 @@ const LIST = [
   'Music for children',
 ];
 
-function Genres() {
+function Genres({navigation}) {
   const [action, setAction] = useState(0);
   const [firstNum, setFirstNum] = useState(0);
   const [lastNum, setLastNum] = useState(4);
 
   const renderItem = ({item, index}) => {
+    const handlePressIn = () => {
+      setAction(index);
+      navigation.navigate('NextSong');
+    };
+
     return (
       <TouchableOpacity
-        onPress={() => setAction(index)}
+        onPress={handlePressIn}
         style={index === action ? styles.itemAction : styles.items}
         key={index}>
         <Text style={index == action ? styles.genreAction : styles.genre}>
@@ -48,17 +53,18 @@ function Genres() {
   };
 
   const handlePrev = () => {
-    // firstNum >= 4 ? setFirstNum(firstNum - 4) : '';
-    // lastNum > 4 ? setLastNum(lastNum - 4) : '';
+    firstNum >= 4 ? setFirstNum(firstNum - 4) : '';
+    lastNum > 4 ? setLastNum(lastNum - 4) : '';
 
     setAction(null);
   };
 
   const handleNext = () => {
-    // firstNum >= 0 && firstNum < LIST.length - 4
-    //   ? setFirstNum(firstNum + 4)
-    //   : '';
-    // lastNum < LIST.length ? setLastNum(lastNum + 4) : '';
+    firstNum >= 0 && firstNum < LIST.length - 4
+      ? setFirstNum(firstNum + 4)
+      : '';
+    lastNum < LIST.length ? setLastNum(lastNum + 4) : '';
+
     LIST.slice(0, 4);
     setAction(null);
   };
@@ -77,12 +83,10 @@ function Genres() {
         )}
         <View>
           <FlatList
-            data={LIST}
+            data={LIST.slice(firstNum, lastNum)}
             renderItem={renderItem}
             horizontal={true}
-            // onViewableItemsChanged={({viewableItems}) => {
-            //   viewableItems = [{index: 4}, {index: 5}];
-            // }}
+            contentContainerStyle={{flexDirection: 'row'}}
           />
         </View>
         {lastNum < LIST.length && (

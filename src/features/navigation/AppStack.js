@@ -10,7 +10,8 @@ import BootSplashScreen from '../../screens/BootSplashScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
 import LogoutScreen from '../../screens/LogoutScreen';
 import SearchScreen from '../../screens/SearchScreen';
-import Categories from '../../screens/Categories/Categories';
+import Categories from '../../screens/Categories';
+import NextSongScreen from '../../screens/NextSong';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -21,7 +22,7 @@ function AppStack() {
       initialRouteName="BootSplash"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Categories" component={Categories} />
-      <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="NextSong" component={NextSongScreen} />
       <Stack.Screen name="BootSplash" component={BootSplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {Keyboard, StyleSheet, TextInput, View} from 'react-native';
 
 import IconBar from './modals/IconBar';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -11,9 +11,13 @@ function SearchInput({navigation}) {
     console.log(text);
   };
 
+  const handlePress = () => {
+    navigation.navigate('Search');
+  };
+
   return (
     <View>
-      <IconBar navigation={navigation} color="#979797" />
+      <IconBar navigation={navigation} />
       <View style={styles.input}>
         <Icon name="search" size={20} style={styles.icon} />
         <TextInput
@@ -22,6 +26,7 @@ function SearchInput({navigation}) {
           placeholderTextColor={'#979797'}
           value={value}
           onChangeText={text => handleChange(text)}
+          onPressIn={handlePress}
         />
       </View>
     </View>
