@@ -41,4 +41,8 @@ export const CategoriesData = [
   {image: cate11, title: 'Traditional'},
   {image: cate12, title: 'Classical'},
   {image: cate13, title: 'Chill'},
+  {image: cate, title: 'Chill'},
+  {image: cate1, title: 'Chill'},
+  {image: cate2, title: 'Chill'},
+  {image: cate3, title: 'Chill'},
 ];
