@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+const COLORS = {red: '#FF344A', icon: '#292929'};
+
 const styles = StyleSheet.create({
   content: {
     backgroundColor: 'rgba(41, 41, 41, 0.75)',
@@ -11,6 +13,7 @@ const styles = StyleSheet.create({
     height: 96,
     overflow: 'hidden',
     justifyContent: 'center',
+    marginTop: 27,
   },
   avtWrap: {
     position: 'relative',
@@ -46,6 +49,16 @@ const styles = StyleSheet.create({
     top: 10,
     width: 30,
     height: 30,
+    backgroundColor: COLORS.icon,
+    borderRadius: 50,
+    opacity: 0.75,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  closeImg: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
   title: {
     fontSize: 30,
@@ -63,7 +76,7 @@ const styles = StyleSheet.create({
     color: 'black',
     backgroundColor: 'white',
     borderRadius: 5,
-    height: 37,
+    height: 40,
     paddingLeft: 8,
     marginBottom: 20,
     fontSize: 15,
@@ -71,7 +84,7 @@ const styles = StyleSheet.create({
   saveButton: {
     width: 140,
     height: 56,
-    backgroundColor: '#FF344A',
+    backgroundColor: COLORS.red,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,
@@ -93,6 +106,20 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     color: 'white',
+  },
+  optionsList: {
+    flexDirection: 'row',
+    marginTop: 4,
+    marginBottom: 25,
+  },
+  optionsItem: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  optionsText: {
+    color: COLORS.red,
+    fontSize: 13,
   },
 });
 export default styles;

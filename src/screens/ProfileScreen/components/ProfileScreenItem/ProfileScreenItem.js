@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text, Image, TextInput} from 'react-native';
+import {View, Text, Image, TextInput, Touchable} from 'react-native';
 import {TouchableOpacity} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import avt from '../../../../assets/sources/Catergories/avatar.png';
 import profileBg from '../../../../assets/sources/Catergories/categories8.png';
-import close from '../../../../assets/sources/Profile/Close.png';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './style';
 
-const ProfileScreenItem = () => {
+const COLORS = {clearIcon: '#D1D1D1'};
+
+const ProfileScreenItem = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.headerProfile}>
@@ -16,7 +18,9 @@ const ProfileScreenItem = () => {
           <Text style={styles.circle} />
           <Image source={avt} style={styles.avt} />
         </View>
-        <Image source={close} style={styles.close} />
+        <TouchableOpacity style={styles.close}>
+          <Icon name="clear" size={18} color={COLORS.clearIcon} />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <Text style={styles.title}>Edit My Profile</Text>
@@ -37,14 +41,14 @@ const ProfileScreenItem = () => {
         <View>
           <Text style={styles.optionsTitle}>Option</Text>
           <View style={styles.optionsList}>
-            <TouchableOpacity>
-              <Text>My notes</Text>
+            <TouchableOpacity style={styles.optionsItem}>
+              <Text style={styles.optionsText}>My notes</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Text>Change password</Text>
+            <TouchableOpacity style={styles.optionsItem}>
+              <Text style={styles.optionsText}>Change password</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Text>Log out</Text>
+            <TouchableOpacity style={styles.optionsItem}>
+              <Text style={styles.optionsText}>Log out</Text>
             </TouchableOpacity>
           </View>
         </View>
