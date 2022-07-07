@@ -90,6 +90,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
+    borderWidth: 10,
+    borderColor: 'green',
   },
   saveButtonText: {
     color: 'white',
