@@ -9,35 +9,17 @@ const HeaderTab = ({title, logo, navigation}) => {
   return (
     <>
       <View style={styles.headerTab}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={styles.headerTabContent}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={PreIcon} style={styles.prevIcon} />
           </TouchableOpacity>
-          <Text
-            style={{textTransform: 'capitalize', color: 'white', fontSize: 24}}>
-            {title}
-          </Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
-        <TouchableOpacity style={styles.avtBorder}>
-          <Text
-            style={{
-              width: 54,
-              height: 54,
-              opacity: 0.6,
-              backgroundColor: '#fff',
-              borderRadius: 50,
-            }}></Text>
+        {logo && <Image style={styles.logo} source={logoImg} />}
+        <TouchableOpacity style={styles.avtWrap}>
+          <Text style={styles.avtBorder}></Text>
           <Image source={avt} style={styles.avt} />
         </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          position: 'absolute',
-          alignItems: 'center',
-          top: 10,
-          width: '100%',
-        }}>
-        {logo && <Image style={styles.logo} source={logoImg} />}
       </View>
     </>
   );

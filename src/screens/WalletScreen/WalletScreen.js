@@ -1,12 +1,12 @@
 import React from 'react';
+import {ScrollView, View} from 'react-native';
 import HeaderTab from '../../components/HeaderTab/HeaderTab';
-import LinearGradient from 'react-native-linear-gradient';
-import ProfileScreenItem from './components/ProfileScreenItem/ProfileScreenItem';
 import HeaderPopup from '../../components/HeaderPopup/HeaderPopup';
-import {View, ScrollView} from 'react-native';
-import styles from './styles';
+import LinearGradient from 'react-native-linear-gradient';
+import WalletScreenItem from './components/WalletScreenItem/WalletScreenItem';
+import styles from './style';
 
-function ProfileScreen({navigation}) {
+const WalletScreen = ({navigation}) => {
   return (
     <LinearGradient
       colors={['#000', '#1B1B1B', '#131313']}
@@ -15,11 +15,11 @@ function ProfileScreen({navigation}) {
       <ScrollView>
         <View style={styles.headerItem}>
           <HeaderPopup navigation={navigation} />
-          <ProfileScreenItem navigation={navigation} />
+          <WalletScreenItem />
         </View>
       </ScrollView>
     </LinearGradient>
   );
-}
+};
 
-export default ProfileScreen;
+export default WalletScreen;

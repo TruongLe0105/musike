@@ -3,25 +3,31 @@ import {StyleSheet} from 'react-native';
 const COLORS = {red: '#FF344A', icon: '#292929'};
 
 const styles = StyleSheet.create({
-  content: {
-    backgroundColor: 'rgba(41, 41, 41, 0.75)',
-    paddingHorizontal: 16,
+  headerItem: {
+    marginTop: 27,
+    marginBottom: 46,
+    borderRadius: 10,
+    overflow: 'hidden',
   },
   headerProfile: {
     position: 'relative',
     width: '100%',
-    height: 96,
     overflow: 'hidden',
     justifyContent: 'center',
-    marginTop: 27,
+  },
+  content: {
+    backgroundColor: 'rgba(41, 41, 41, 0.75)',
+    paddingHorizontal: 16,
+    paddingVertical: 25,
   },
   avtWrap: {
     position: 'relative',
-    width: 79,
-    height: 79,
+    width: 70,
+    height: 70,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 22,
+    marginVertical: 12,
   },
   circle: {
     position: 'absolute',
@@ -33,20 +39,18 @@ const styles = StyleSheet.create({
   },
   avt: {
     resizeMode: 'contain',
-    width: 72,
+    width: 65,
   },
   profileBg: {
     position: 'absolute',
     resizeMode: 'cover',
     width: '100%',
     height: '100%',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
   },
   close: {
     position: 'absolute',
-    right: 0,
-    top: 10,
+    right: 10,
+    top: 12,
     width: 30,
     height: 30,
     backgroundColor: COLORS.icon,
@@ -61,16 +65,17 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   title: {
-    fontSize: 30,
+    fontSize: 28,
     color: 'white',
     fontWeight: 'bold',
-    marginTop: 25,
-    marginBottom: 17,
   },
   label: {
     color: 'white',
-    fontSize: 15,
-    marginBottom: 20,
+    fontSize: 13,
+    fontWeight: '400',
+  },
+  form: {
+    marginTop: 17,
   },
   textInput: {
     color: 'black',
@@ -78,50 +83,52 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 40,
     paddingLeft: 8,
-    marginBottom: 20,
-    fontSize: 15,
+    fontSize: 16,
+    marginVertical: 15,
   },
   saveButton: {
-    width: 140,
-    height: 56,
+    width: 116,
+    height: 46,
     backgroundColor: COLORS.red,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
-    borderWidth: 10,
-    borderColor: 'green',
+    marginTop: 2,
   },
   saveButtonText: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 17,
   },
   line: {
     width: '100%',
     height: 0.5,
     backgroundColor: '#979797',
     opacity: 0.65,
-    marginVertical: 20,
+    marginVertical: 17,
   },
   optionsTitle: {
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: 'bold',
     color: 'white',
   },
   optionsList: {
     flexDirection: 'row',
     marginTop: 4,
-    marginBottom: 25,
-  },
-  optionsItem: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   optionsText: {
     color: COLORS.red,
     fontSize: 13,
+  },
+  textInputWrap: {
+    position: 'relative',
+  },
+  showWallet: {
+    position: 'absolute',
+    right: 10,
+    top: 22,
   },
 });
 export default styles;
