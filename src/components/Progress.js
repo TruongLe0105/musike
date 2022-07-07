@@ -3,9 +3,10 @@ import {StyleSheet, Text, View} from 'react-native';
 import Slider from '@react-native-community/slider';
 import TrackPlayer, {useProgress} from 'react-native-track-player';
 
+
 export const Progress = () => {
   const progress = useProgress();
-  console.log('progress:', progress);
+  // console.log('progress:', progress);
   return (
     <>
       <View style={styles.labelContainer}>
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
   container: {
     height: 40,
     width: '75%',
-    // marginTop: 25,
     flexDirection: 'row',
   },
   labelContainer: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    alignItems:'center'
+    alignItems: 'center',
   },
   labelText: {
     color: 'white',

@@ -36,7 +36,7 @@ function OnboardingScreen() {
           drawerIcon: ({color}) => <Icon name="home" color={color} size={20} />,
         })}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="PlayMusic"
         component={PlayMusicScreen}
         options={() => ({
@@ -44,7 +44,7 @@ function OnboardingScreen() {
             <Icon name="music" color={color} size={20} />
           ),
         })}
-      />
+      /> */}
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}

@@ -2,6 +2,17 @@ import styled from 'styled-components';
 import {Text, View} from 'react-native';
 import image from '../assets/sources/logo.png';
 
+
+export const TextBlurred = styled(Text)`
+  font-weight: 500;
+  font-size: 12px;
+  color: #979797;
+`;
+export const TextSizeM = styled(Text)`
+  font-weight: 500;
+  font-size: 12px;
+  color: #ffffff;
+`;
 export const TextField = styled(Text)`
   font-family: 'Inter';
   font-weight: 700;

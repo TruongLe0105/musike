@@ -5,21 +5,16 @@ import TrackPlayer, {usePlaybackState, State} from 'react-native-track-player';
 import {
   SafeAreaView,
   StatusBar,
-  StyleSheet,
   View,
-  ActivityIndicator,
-  Text,
   ScrollView,
   Dimensions,
   Platform,
   Image,
   TouchableOpacity,
   Linking,
-  Alert,
   BackHandler,
-  Animated,
-  Easing,
   ImageBackground,
+  Text,
 } from 'react-native';
 import Toast from '@rimiti/react-native-toastify';
 
@@ -29,19 +24,19 @@ import styles from './PlayMusicStyle';
 // import RNBootSplash from 'react-native-bootsplash';
 
 import Carousel from 'react-native-snap-carousel';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import background from '../../assets/sources/playMusic/background.png';
 
 import {PlayerControls, Progress, TrackInfo} from '../../components';
 import {SetupService, QueueInitalTracksService} from '../../services';
 import {useCurrentTrack} from '../../hooks';
 
-import ModalCategory from '../../components/modals/Modal';
+import background from '../../assets/sources/playMusic/background.png';
+import micro from '../../assets/sources/playMusic/micro.png';
+import playlist from '../../assets/sources/playMusic/playlist.png';
+import shapeFooter from '../../assets/sources/playMusic/shapeFooter.png';
 
 import Time from '../../components/Time';
 
 import ModalFirst from '../../components/modals/ModalFirst';
-import IconBar from '../../components/modals/IconBar';
 import Header from '../../components/HeaderTab/PlayMusic/Header';
 
 const IMAGE = [
@@ -175,7 +170,7 @@ const PlayMusicScreen = ({navigation}) => {
   };
 
   const onLink = async index => {
-    console.log(LINK[index % 3]);
+    // console.log(LINK[index % 3]);
     await Linking.openURL(LINK[index % 3]);
   };
 
@@ -196,7 +191,7 @@ const PlayMusicScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.screenContainer}>
       <StatusBar barStyle={'light-content'} />
-      <Header />
+      <Header navigation={navigation} />
       <Toast
         ref={React.useRef()}
         style={styles.toast}
@@ -209,12 +204,13 @@ const PlayMusicScreen = ({navigation}) => {
       />
       <Image
         style={styles.imageCircle}
-        source={{
-          uri: `${
-            track?.artwork ||
-            'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/Mar_diffuse.png'
-          }`,
-        }}
+        // source={{
+        //   uri: `${
+        //     track?.artwork ||
+        //     'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/Mar_diffuse.png'
+        //   }`,
+        // }}
+        source={background}
       />
       {/* <View
         style={{
@@ -233,15 +229,41 @@ const PlayMusicScreen = ({navigation}) => {
         <View style={{flex: 1}}>
           <View style={styles.contentContainer}>
             <TrackInfo track={track} />
-            <Progress />
           </View>
-          <View style={styles.actionRowContainer}>
-            <PlayerControls
-              refToast={refT}
-              showReward={() => setShowAward(true)}
-            />
-          </View>
+          {/* <View style={styles.actionRowContainer}></View> */}
           <Time />
+          <Progress />
+          <PlayerControls
+            refToast={refT}
+            showReward={() => setShowAward(true)}
+          />
+          <View style={styles.wrapperFooter}>
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity
+                style={{
+                  padding: 10,
+                }}>
+                <Image source={shapeFooter} />
+              </TouchableOpacity>
+              <View style={styles.footer}>
+                <Text style={styles.textFooter}>Chromecast is ready</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity
+                style={{
+                  padding: 10,
+                }}>
+                <Image source={micro} style={{marginRight: 20}} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  padding: 10,
+                }}>
+                <Image source={playlist} />
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </ScrollView>
       <View style={{width: '100%'}}>
@@ -255,23 +277,7 @@ const PlayMusicScreen = ({navigation}) => {
           loop={true}
         />
       </View>
-      {/* <TouchableOpacity
-        onPress={toggleModal}
-        style={{
-          width: 100,
-          height: 100,
-          position: 'absolute',
-          top: 20,
-          right: -50,
-          borderRadius: 5,
-          zIndex: 100,
-        }}>
-        <Icon name={'music'} size={30} color="#FF344A" />
-      </TouchableOpacity> */}
 
-      {/* <IconBar navigation={navigation} /> */}
-
-      {/* <ModalCategory isVisible={visibleModal} toggle={toggleModal} /> */}
       <ModalFirst
         isVisible={isShowFirstModal}
         onClose={() => {
