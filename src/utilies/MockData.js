@@ -46,3 +46,16 @@ export const CategoriesData = [
   {image: cate2, title: 'Chill'},
   {image: cate3, title: 'Chill'},
 ];
+
+export const WalletScreenMethod = [
+  'Exchange points',
+  'Give points',
+  'Payment list',
+  'My NFT collection',
+];
+export const WalletScreenDetail = [
+  '7.598 MUSIKE',
+  '3.240 MUSIKE',
+  'Manage',
+  'Manage',
+];

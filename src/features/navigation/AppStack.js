@@ -7,6 +7,7 @@ import BootSplashScreen from '../../screens/BootSplashScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
 import NextSongScreen from '../../screens/NextSong/NextSong';
 import Categories from '../../screens/Categories/Categories';
+import ProfileScreen from '../../screens/ProfileScreen/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ function AppStack() {
       <Stack.Screen name="BootSplash" component={BootSplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 }

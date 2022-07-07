@@ -4,12 +4,13 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {TouchableOpacity} from 'react-native';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import ProfileScreen from './ProfileScreen/ProfileScreen';
-import SettingScreen from './SettingScreen';
+import SettingScreen from './ProfileScreen/ProfileScreen';
+import ProfileScreen from './SettingScreen';
 import HomeScreen from './HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import SearchScreen from './SearchScreen';
 import PlayMusicScreen from './PlayMusic/PlayMusicScreen';
+import WalletScreen from '../screens/WalletScreen/WalletScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -63,6 +64,13 @@ function OnboardingScreen() {
       <Drawer.Screen
         name="Search"
         component={SearchScreen}
+        options={{
+          drawerItemStyle: {display: 'none'},
+        }}
+      />
+      <Drawer.Screen
+        name="Wallet"
+        component={WalletScreen}
         options={{
           drawerItemStyle: {display: 'none'},
         }}
