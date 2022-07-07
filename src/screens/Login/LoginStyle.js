@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    // top: 30,
     top: 0,
     width: '100%',
     flexDirection: 'row',

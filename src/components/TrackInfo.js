@@ -37,7 +37,7 @@ export const TrackInfo = ({track}) => {
       Animated.loop(
         Animated.timing(spinValue.current, {
           toValue: 1,
-          duration: 5000,
+          duration: 10000,
           easing: Easing.linear, // Easing is an additional import from react-native
           useNativeDriver: true, // To make use of native driver for performance
         }),
@@ -57,7 +57,18 @@ export const TrackInfo = ({track}) => {
   return (
     <View style={styles.container}>
       <Animated.Image
-        style={[styles.artwork, {transform: [{rotate: spin}]}]}
+        style={[
+          styles.artwork,
+          {transform: [{rotate: spin}]},
+          // {
+          //   shadowOffset: {
+          //     width: 1,
+          //     height: -12,
+          //   },
+          //   shadowOpacity,
+          //   shadowRadius,
+          // },
+        ]}
         source={
           OBJ[track?.title] || Pop
           // {uri: `${track?.artwork}`}
@@ -75,14 +86,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   artwork: {
-    width: 240,
-    height: 240,
+    width: 298,
+    height: 298,
     marginTop: 30,
     backgroundColor: '#aaa',
-    borderRadius: 120,
-    borderWidth: 2,
-    padding: 5,
+    borderRadius: 150,
+    borderWidth: 1,
+    // padding: 5,
     borderColor: '#aaa',
+    shadowColor: 'red',
+    shadowOpacity: 1,
   },
   titleText: {
     fontSize: 20,

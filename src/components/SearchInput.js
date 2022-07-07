@@ -1,28 +1,40 @@
 import React, {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {
+  Keyboard,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import IconBar from './modals/IconBar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-function SearchInput({navigation}) {
+function SearchInput({navigation, editable}) {
   const [value, setValue] = useState(null);
 
   const handleChange = text => {
     console.log(text);
   };
 
+  const handlePress = () => {
+    !editable ? navigation.navigate('Search') : '';
+  };
+
   return (
     <View>
-      <IconBar navigation={navigation} color="#979797" />
+      <IconBar navigation={navigation} />
       <View style={styles.input}>
         <Icon name="search" size={20} style={styles.icon} />
-        <TextInput
-          style={styles.textInput}
-          placeholder="Search"
-          placeholderTextColor={'#979797'}
-          value={value}
-          onChangeText={text => handleChange(text)}
-        />
+        <TouchableOpacity style={styles.textInput} onPress={handlePress}>
+          <TextInput
+            placeholder="Search"
+            placeholderTextColor={'#979797'}
+            value={value}
+            onChangeText={text => handleChange(text)}
+            editable={editable}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

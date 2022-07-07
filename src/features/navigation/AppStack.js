@@ -1,19 +1,14 @@
 import React from 'react';
-// import * as React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import LoginScreen from '../../screens/LoginScreen';
+import LoginScreen from '../../screens/Login/LoginScreen';
 import BootSplashScreen from '../../screens/BootSplashScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
-import LogoutScreen from '../../screens/LogoutScreen';
-import SearchScreen from '../../screens/SearchScreen';
+import NextSongScreen from '../../screens/NextSong/NextSong';
 import Categories from '../../screens/Categories/Categories';
 
 const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
 
 function AppStack() {
   return (
@@ -21,7 +16,7 @@ function AppStack() {
       initialRouteName="BootSplash"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Categories" component={Categories} />
-      <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="NextSong" component={NextSongScreen} />
       <Stack.Screen name="BootSplash" component={BootSplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />

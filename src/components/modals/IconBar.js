@@ -1,4 +1,5 @@
 import React from 'react';
+import {useDrawerStatus} from '@react-navigation/drawer';
 
 import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -6,7 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 function IconBar({navigation}) {
   return (
     <TouchableOpacity
-      onPress={() => navigation.toggleDrawer()}
+      onPress={() => navigation.openDrawer()}
       style={{
         width: 100,
         height: 100,

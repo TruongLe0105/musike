@@ -19,29 +19,30 @@ import {
   BackHandler,
   Animated,
   Easing,
+  ImageBackground,
 } from 'react-native';
 import Toast from '@rimiti/react-native-toastify';
 
-import ModalSecond from '../components/modals/ModalAward';
-import styles from '../HomeStyle';
+import ModalSecond from '../../components/modals/ModalAward';
+import styles from './PlayMusicStyle';
 
 // import RNBootSplash from 'react-native-bootsplash';
 
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import background from '../../assets/sources/playMusic/background.png';
 
-import {PlayerControls, Progress, TrackInfo} from '../components';
-import {SetupService, QueueInitalTracksService} from '../services';
-import {useCurrentTrack} from '../hooks';
+import {PlayerControls, Progress, TrackInfo} from '../../components';
+import {SetupService, QueueInitalTracksService} from '../../services';
+import {useCurrentTrack} from '../../hooks';
 
-// import ModalFirst from '../components/m';
+import ModalCategory from '../../components/modals/Modal';
 
-import ModalCategory from '../components/modals/Modal';
+import Time from '../../components/Time';
 
-import Time from '../components/Time';
-
-import ModalFirst from '../components/modals/ModalAward';
-import IconBar from '../components/modals/IconBar';
+import ModalFirst from '../../components/modals/ModalFirst';
+import IconBar from '../../components/modals/IconBar';
+import Header from '../../components/HeaderTab/PlayMusic/Header';
 
 const IMAGE = [
   'https://raw.githubusercontent.com/Hoang21099/mar-asset/master/a.jpg',
@@ -195,16 +196,10 @@ const PlayMusicScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.screenContainer}>
       <StatusBar barStyle={'light-content'} />
+      <Header />
       <Toast
         ref={React.useRef()}
-        style={{
-          backgroundColor: '#ffffffcf',
-          paddingVertical: 25,
-          fontSize: 14,
-          paddingHorizontal: 25,
-          textAlign: 'center',
-          borderRadius: 15,
-        }}
+        style={styles.toast}
         textStyle={{
           textAlign: 'center',
           color: '#FF344A',
@@ -213,13 +208,7 @@ const PlayMusicScreen = ({navigation}) => {
         position="top"
       />
       <Image
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          top: 0,
-          bottom: 0,
-        }}
+        style={styles.imageCircle}
         source={{
           uri: `${
             track?.artwork ||
@@ -227,7 +216,7 @@ const PlayMusicScreen = ({navigation}) => {
           }`,
         }}
       />
-      <View
+      {/* <View
         style={{
           position: 'absolute',
           width: '100%',
@@ -236,7 +225,7 @@ const PlayMusicScreen = ({navigation}) => {
           bottom: 0,
           backgroundColor: '#000000ab',
         }}
-      />
+      /> */}
 
       <ScrollView
         style={{width: '100%', height: '100%'}}
@@ -266,7 +255,7 @@ const PlayMusicScreen = ({navigation}) => {
           loop={true}
         />
       </View>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={toggleModal}
         style={{
           width: 100,
@@ -278,11 +267,11 @@ const PlayMusicScreen = ({navigation}) => {
           zIndex: 100,
         }}>
         <Icon name={'music'} size={30} color="#FF344A" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      <IconBar navigation={navigation} />
+      {/* <IconBar navigation={navigation} /> */}
 
-      <ModalCategory isVisible={visibleModal} toggle={toggleModal} />
+      {/* <ModalCategory isVisible={visibleModal} toggle={toggleModal} /> */}
       <ModalFirst
         isVisible={isShowFirstModal}
         onClose={() => {

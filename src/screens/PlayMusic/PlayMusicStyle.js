@@ -5,9 +5,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: '#212121',
-    // backgroundColor: 'white',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   contentContainer: {
     flex: 3,
@@ -47,12 +44,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#1a1a1a',
   },
   image: {
     height: '100%',
     width: '100%',
-    // marginTop: 15,
+  },
+  imageCircle: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    bottom: 0,
   },
   logo: {
     position: 'absolute',
@@ -60,6 +62,14 @@ const styles = StyleSheet.create({
     top: '40%',
     width: 201,
     height: 72,
+  },
+  toast: {
+    backgroundColor: '#ffffffcf',
+    paddingVertical: 25,
+    fontSize: 14,
+    paddingHorizontal: 25,
+    textAlign: 'center',
+    borderRadius: 15,
   },
 });
 

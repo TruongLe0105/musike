@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -11,15 +11,14 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import image from '../assets/sources/image2.png';
-import background from '../assets/bootsplash_logo.png';
+import image from '../../assets/sources/image2.png';
 
-import { Button, ErrorMessage, Header, TextField } from '../components/Styled';
-import { isValidEmail, isValidPassword } from '../utilies/Validations';
+import {Button, ErrorMessage, Header, TextField} from '../../components/Styled';
+import {isValidEmail, isValidPassword} from '../../utilies/Validations';
 
 import styles from './LoginStyle';
 
-function LoginMusike({ navigation }) {
+function LoginMusike({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailMessage, setEmailMessage] = useState('');
@@ -71,7 +70,7 @@ function LoginMusike({ navigation }) {
   const handleLogin = () => {
     const check = isValidEmail(email) && isValidPassword(password);
     if (check) {
-      storeData({ email, password });
+      storeData({email, password});
       loggedAccount(true);
       navigation.navigate('Onboarding');
     } else {
@@ -122,7 +121,7 @@ function LoginMusike({ navigation }) {
         <View style={styles.wrapper}>
           <ScrollView>
             <View>
-              <Header style={{ color: '#FF344A' }}>Sign In</Header>
+              <Header style={{color: '#FF344A'}}>Sign In</Header>
               <Header>To Your Account</Header>
             </View>
             <View>
@@ -132,6 +131,7 @@ function LoginMusike({ navigation }) {
                 onBlur={handleBlurEmail}
                 style={styles.input}
                 value={email}
+                placeholderTextColor="#FFFFFF"
                 placeholder="Example@gmail.com"
               />
               {emailMessage.length > 0 && (
@@ -146,6 +146,7 @@ function LoginMusike({ navigation }) {
                 secureTextEntry
                 style={styles.input}
                 value={password}
+                placeholderTextColor="#FFFFFF"
                 placeholder="Password"
               />
               {passwordMessage.length > 0 && (
@@ -157,7 +158,7 @@ function LoginMusike({ navigation }) {
                 Forgot password?
               </TextField>
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleLogin} style={{ marginBottom: 16 }}>
+            <TouchableOpacity onPress={handleLogin} style={{marginBottom: 16}}>
               <Button>Login</Button>
             </TouchableOpacity>
             <TouchableOpacity style={styles.loginBtn}>
