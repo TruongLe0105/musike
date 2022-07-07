@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {TouchableOpacity} from 'react-native';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import PlayMusicScreen from './PlayMusicScreen';
 import ProfileScreen from './ProfileScreen/ProfileScreen';
 import SettingScreen from './SettingScreen';
 import HomeScreen from './HomeScreen';
