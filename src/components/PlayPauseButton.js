@@ -4,11 +4,14 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {usePlaybackState, State} from 'react-native-track-player';
 
 import {Button} from './Button';
 import {useOnTogglePlayback} from '../hooks';
+import circle from '../assets/sources/playMusic/circle.png';
+import combined from '../assets/sources/playMusic/combined.png';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -43,7 +46,7 @@ export const PlayPauseButton = ({refToast, showReward}) => {
       return null;
     } catch (e) {
       // error reading value
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -103,8 +106,24 @@ export const PlayPauseButton = ({refToast, showReward}) => {
       <TouchableOpacity
         onPress={onTogglePlayback}
         type="primary"
-        style={{padding: 10}}>
-        <Icon name={isPlaying ? 'pause' : 'play'} size={40} color="#FF344A" />
+        style={{marginHorizontal: 30}}>
+        {isPlaying && (
+          <View style={styles.circle}>
+            <Image source={circle} />
+            <Image source={combined} style={{position: 'absolute'}} />
+          </View>
+        )}
+        {!isPlaying && (
+          <View style={styles.circle}>
+            <Image source={circle} />
+            <Icon
+              name="play"
+              size={20}
+              color="white"
+              style={{position: 'absolute'}}
+            />
+          </View>
+        )}
       </TouchableOpacity>
       <Toast
         ref={refToast}
@@ -130,5 +149,9 @@ const styles = StyleSheet.create({
     height: 40,
     marginTop: 20,
     marginBottom: 60,
+  },
+  circle: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

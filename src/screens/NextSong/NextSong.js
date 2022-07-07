@@ -23,10 +23,6 @@ import coolicon from '../../assets/sources/list_song/coolicon.png';
 
 import HeaderTab from '../../components/HeaderTab/HeaderTab';
 
-function NextSongScreen({navigation}) {
-  const [action, setAction] = useState(2);
-  const [switchOn, setSwitchOn] = useState(false);
-
   const LIST = [
     {
       image: Bieber,
@@ -65,6 +61,10 @@ function NextSongScreen({navigation}) {
     },
   ];
 
+function NextSongScreen({navigation}) {
+  const [action, setAction] = useState(2);
+  const [switchOn, setSwitchOn] = useState(false);
+
   const renderSongs = ({item, index}) => {
     const handlePress = () => {
       setAction(index);
@@ -99,7 +99,7 @@ function NextSongScreen({navigation}) {
   return (
     <View style={styles.wrapperScreen}>
       <View style={styles.heading}>
-        <HeaderTab title="Next Song" avatar={avatar} />
+        <HeaderTab title="Next Song" avatar={avatar} navigation={navigation} />
       </View>
       <View style={styles.autoplay}>
         <Text style={styles.title}>Autoplay</Text>

@@ -9,7 +9,7 @@ import SettingScreen from './SettingScreen';
 import HomeScreen from './HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import SearchScreen from './SearchScreen';
-import PlayMusicScreen from './PlayMusic/PlayMusicScreen';
+// import PlayMusicScreen from './PlayMusic/PlayMusicScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -35,7 +35,7 @@ function OnboardingScreen() {
           drawerIcon: ({color}) => <Icon name="home" color={color} size={20} />,
         })}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="PlayMusic"
         component={PlayMusicScreen}
         options={() => ({
@@ -43,7 +43,7 @@ function OnboardingScreen() {
             <Icon name="music" color={color} size={20} />
           ),
         })}
-      />
+      /> */}
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}

@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
   imageCircle: {
     position: 'absolute',
     width: '100%',
-    height: '100%',
+    // height: '100%',
     top: 0,
-    bottom: 0,
+    // bottom: 0,
   },
   logo: {
     position: 'absolute',
@@ -70,6 +70,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     textAlign: 'center',
     borderRadius: 15,
+  },
+  wrapperFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginLeft: 13,
+    marginRight: 30,
+    marginTop: 20,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textFooter: {
+    color: '#FF344A',
+    fontSize: 10,
+    fontWeight: '400',
+    lineHeight: 12,
   },
 });
 

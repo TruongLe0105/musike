@@ -1,23 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import styled from 'styled-components';
 
 import TrackPlayer from 'react-native-track-player';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-  ActivityIndicator,
-  Text,
-  ScrollView,
-  Dimensions,
-  Platform,
-  Image,
-} from 'react-native';
+import {StyleSheet, View, Text, Dimensions, Platform} from 'react-native';
 
 import {usePlaybackState, State} from 'react-native-track-player';
 
 import {useCurrentTrack} from '../hooks';
+import {TextBlurred, TextSizeM} from './Styled';
+import ActionMusic from './ActionMusic';
 
 const IS_IOS = Platform.OS === 'ios';
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
@@ -36,6 +28,14 @@ export const itemWidth = slideWidth + itemHorizontalMargin * 2;
 
 let intervalCall;
 
+export const ViewToken = styled(View)`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 16px;
+  margin-right: 24px;
+  margin-top: 10px;
+`;
+
 const App = () => {
   const track = useCurrentTrack();
   const [isPlayerReady, setIsPlayerReady] = useState(false);
@@ -53,9 +53,9 @@ const App = () => {
         setInterval(() => {
           setTime(prevCount => prevCount + 1);
         }, 1000);
-      console.log('before intervalCall:', intervalCall);
+      // console.log('before intervalCall:', intervalCall);
     } else {
-      console.log('after intervalCall:', intervalCall);
+      // console.log('after intervalCall:', intervalCall);
 
       clearInterval(intervalCall);
       intervalCall = null;
@@ -107,88 +107,38 @@ const App = () => {
   };
 
   return (
-    <>
-      <View style={styles.column}>
-        <View style={styles.row}>
-          <Text style={styles.title}>Mining Time: </Text>
-          <Text style={styles.subTitle}>{textTime()}</Text>
-        </View>
-        <View style={styles.row}>
-          <Text style={styles.title}>Earn Today: </Text>
-          <Text style={styles.subTitle}>{`${(time * 0.05).toFixed(
-            2,
-          )} MUSIKE`}</Text>
-        </View>
+    <View style={{marginBottom: 15}}>
+      <View style={styles.wrapperToken}>
+        <Text style={styles.tokenTitle}>Musike token</Text>
+        <ActionMusic />
       </View>
-      <View
-        style={{
-          width: '100%',
-          justifyContent: 'center',
-          marginVertical: 10,
-          alignItems: 'flex-start',
-          marginLeft: 10,
-        }}>
-        <View
-          style={{
-            width: '20%',
-            height: 2,
-            backgroundColor: 'white',
-          }}
-        />
-      </View>
-
-      <View>
-        <View style={[styles.row]}>
-          <Text style={[styles.title, {fontSize: 18}]}>Total Earn: </Text>
-          <Text style={styles.subTitle}>{`${(time * 0.05).toFixed(
-            2,
-          )} MUSIKE`}</Text>
-        </View>
-      </View>
-    </>
+      <ViewToken>
+        <TextBlurred>Mining time</TextBlurred>
+        <TextSizeM>{textTime()}</TextSizeM>
+      </ViewToken>
+      <ViewToken>
+        <TextBlurred>Earn today</TextBlurred>
+        <TextSizeM>{`${(time * 0.05).toFixed(2)} MUSIKE`}</TextSizeM>
+      </ViewToken>
+      <ViewToken>
+        <TextBlurred>Total earn</TextBlurred>
+        <TextSizeM>{`${(time * 0.05).toFixed(2)} MUSIKE`}</TextSizeM>
+      </ViewToken>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  screenContainer: {
-    flex: 1,
-    backgroundColor: '#212121',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  contentContainer: {
-    flex: 3,
-    alignItems: 'center',
-  },
-  topBarContainer: {
-    width: '100%',
+  wrapperToken: {
     flexDirection: 'row',
-    paddingHorizontal: 20,
-    justifyContent: 'flex-end',
+    height: 20,
   },
-  actionRowContainer: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: 'normal',
-    color: '#aaa',
-  },
-  subTitle: {
+  tokenTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  row: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 10,
-  },
-  column: {
-    width: '100%',
-    flexDirection: 'column',
+    fontWeight: '700',
+    color: '#FFFFFF',
+    marginLeft: 16,
+    marginRight: 30,
   },
 });
 

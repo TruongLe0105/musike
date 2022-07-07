@@ -20,6 +20,7 @@ function SearchInput({navigation, editable}) {
   const handlePress = () => {
     !editable ? navigation.navigate('Search') : '';
   };
+
   return (
     <View>
       <IconBar navigation={navigation} />
@@ -32,6 +33,7 @@ function SearchInput({navigation, editable}) {
             value={value}
             onChangeText={text => handleChange(text)}
             editable={editable}
+            autoFocus={true}
           />
         </TouchableOpacity>
       </View>

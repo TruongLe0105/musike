@@ -4,16 +4,16 @@ import {TouchableOpacity, View, Text, Image, StyleSheet} from 'react-native';
 import vector from '../../../assets/sources/playMusic/Vector.png';
 import ellipse from '../../../assets/sources/playMusic/ellipse.png';
 
-function Header() {
+function Header({navigation}) {
   return (
     <View style={styles.wrapperHeader}>
       <View style={styles.wrapperLeft}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image source={vector} />
         </TouchableOpacity>
         <Text style={styles.title}>Music play to earn</Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.iconEllipse}>
         <Image source={ellipse} />
       </TouchableOpacity>
     </View>
@@ -40,6 +40,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     marginLeft: 20,
+  },
+  iconEllipse: {
+    position: 'absolute',
+    right: 10,
+    paddingHorizontal: 13,
   },
 });
 

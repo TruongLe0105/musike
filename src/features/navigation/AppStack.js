@@ -7,6 +7,7 @@ import BootSplashScreen from '../../screens/BootSplashScreen';
 import OnboardingScreen from '../../screens/OnboardingScreen';
 import NextSongScreen from '../../screens/NextSong/NextSong';
 import Categories from '../../screens/Categories/Categories';
+import PlayMusicScreen from '../../screens/PlayMusic/PlayMusicScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ function AppStack() {
       <Stack.Screen name="NextSong" component={NextSongScreen} />
       <Stack.Screen name="BootSplash" component={BootSplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="PlayMusic" component={PlayMusicScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
     </Stack.Navigator>
   );
