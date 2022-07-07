@@ -59,7 +59,11 @@ const HandleArtistList = ({item, index}) => {
 
 const SearchScreen = ({navigation}) => {
   return (
+<<<<<<< HEAD
     <ScrollView style={{paddingLeft: 20, backgroundColor: '#000'}}>
+=======
+    <ScrollView style={{paddingLeft: 15, backgroundColor: '#000'}}>
+>>>>>>> 995fff651a8071f5803075cd38d6af3929561a55
       <SearchInput navigation={navigation} />
       <FlatList
         style={{flexDirection: 'row', marginTop: 40}}
