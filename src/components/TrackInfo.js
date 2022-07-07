@@ -1,6 +1,17 @@
 import React, {useRef, useEffect} from 'react';
-import {Image, StyleSheet, Text, View, Animated, Easing} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  Easing,
+  TouchableOpacity,
+} from 'react-native';
 import {usePlaybackState, State} from 'react-native-track-player';
+
+import heart from '../assets/sources/playMusic/heart.png';
+import share from '../assets/sources/playMusic/share.png';
 
 import Pop from '../../src/assets/resources/Pop.jpg';
 import Hiphop from '../../src/assets/resources/hiphop.jpg';
@@ -31,20 +42,21 @@ export const TrackInfo = ({track}) => {
     if (!spinValue.current) {
       return;
     }
-    console.log('sssss');
+    // console.log('sssss');
     if (isPlaying) {
-      console.log('spinValue.current: ', spinValue.current);
+      // console.log('spinValue.current: ', spinValue.current);
       Animated.loop(
         Animated.timing(spinValue.current, {
           toValue: 1,
-          duration: 10000,
+          duration: 5000,
           easing: Easing.linear, // Easing is an additional import from react-native
           useNativeDriver: true, // To make use of native driver for performance
         }),
       ).start();
     } else {
-      Animated.loop(Animated.timing(spinValue.current)).stop(0);
-      spinValue.current.setValue(0);
+      // Animated.loop(Animated.timing(spinValue.current)).stop(0);
+      Animated.loop(Animated.timing(spinValue.current)).stop(spinValue.current);
+      // spinValue.current.setValue(0);
     }
   }, [state]);
 
@@ -57,24 +69,25 @@ export const TrackInfo = ({track}) => {
   return (
     <View style={styles.container}>
       <Animated.Image
-        style={[
-          styles.artwork,
-          {transform: [{rotate: spin}]},
-          // {
-          //   shadowOffset: {
-          //     width: 1,
-          //     height: -12,
-          //   },
-          //   shadowOpacity,
-          //   shadowRadius,
-          // },
-        ]}
+        style={[styles.artwork, {transform: [{rotate: spin}]}]}
         source={
           OBJ[track?.title] || Pop
           // {uri: `${track?.artwork}`}
         }
       />
-      <Text style={styles.titleText}>{track?.title}</Text>
+      <View style={styles.wrapperTrackTitle}>
+        <View style={styles.wrapperIcon}>
+          <TouchableOpacity>
+            <Image source={heart} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconShare}>
+            <Image source={share} />
+          </TouchableOpacity>
+        </View>
+        <View style={{width: 200, alignItems: 'center'}}>
+          <Text style={styles.titleText}>{track?.title}</Text>
+        </View>
+      </View>
       <Text style={styles.artistText}>{track?.artist}</Text>
     </View>
   );
@@ -84,6 +97,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     paddingHorizontal: 20,
+    width: '100%',
   },
   artwork: {
     width: 298,
@@ -92,21 +106,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#aaa',
     borderRadius: 150,
     borderWidth: 1,
-    // padding: 5,
     borderColor: '#aaa',
     shadowColor: 'red',
     shadowOpacity: 1,
   },
+  wrapperTrackTitle: {
+    marginTop: 20,
+    marginBottom: 7,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   titleText: {
     fontSize: 20,
-    fontWeight: '800',
-    color: 'white',
-    marginTop: 30,
-    marginBottom: 10,
+    fontWeight: '700',
+    color: '#FFFFFF',
   },
   artistText: {
-    fontSize: 16,
-    fontWeight: '200',
-    color: 'white',
+    fontSize: 15,
+    fontWeight: '400',
+    color: '#FFFFFF',
+    marginBottom: 30,
+  },
+  wrapperIcon: {
+    position: 'absolute',
+    flexDirection: 'row',
+    right: 19,
+    alignItems: 'center',
+  },
+  iconShare: {
+    marginLeft: 22,
   },
 });
