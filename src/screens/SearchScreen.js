@@ -11,7 +11,6 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {ArtistList} from '../utilies/MockData';
 import SearchInput from '../components/SearchInput';
 
-
 const IMAGE = [FeatureImg, FeatureImg, FeatureImg, FeatureImg];
 const IMAGENFTS = [NFTS1, NFTS2, NFTS3, NFTS4, NFTS1];
 const IMAGENFTS2 = [NFTS4, NFTS3, NFTS2, NFTS1, NFTS4];
@@ -60,7 +59,11 @@ const HandleArtistList = ({item, index}) => {
 
 const SearchScreen = ({navigation}) => {
   return (
+<<<<<<< HEAD
     <ScrollView style={{paddingLeft: 20, backgroundColor: '#000'}}>
+=======
+    <ScrollView style={{paddingLeft: 15, backgroundColor: '#000'}}>
+>>>>>>> 995fff651a8071f5803075cd38d6af3929561a55
       <SearchInput navigation={navigation} />
       <FlatList
         style={{flexDirection: 'row', marginTop: 40}}
