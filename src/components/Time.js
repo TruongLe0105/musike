@@ -8,7 +8,6 @@ import {StyleSheet, View, Text, Dimensions, Platform} from 'react-native';
 import {usePlaybackState, State} from 'react-native-track-player';
 
 import {useCurrentTrack} from '../hooks';
-import {TextBlurred, TextSizeM} from './Styled';
 import ActionMusic from './ActionMusic';
 
 const IS_IOS = Platform.OS === 'ios';
@@ -113,16 +112,20 @@ const App = () => {
         <ActionMusic />
       </View>
       <ViewToken>
-        <TextBlurred>Mining time</TextBlurred>
-        <TextSizeM>{textTime()}</TextSizeM>
+        <Text style={styles.textBlurred}>Mining time</Text>
+        <Text style={styles.textSizeM}>{textTime()}</Text>
       </ViewToken>
       <ViewToken>
-        <TextBlurred>Earn today</TextBlurred>
-        <TextSizeM>{`${(time * 0.05).toFixed(2)} MUSIKE`}</TextSizeM>
+        <Text style={styles.textBlurred}>Earn today</Text>
+        <Text style={styles.textSizeM}>
+          {`${(time * 0.05).toFixed(2)} MUSIKE`}
+        </Text>
       </ViewToken>
       <ViewToken>
-        <TextBlurred>Total earn</TextBlurred>
-        <TextSizeM>{`${(time * 0.05).toFixed(2)} MUSIKE`}</TextSizeM>
+        <Text style={styles.textBlurred}>Total earn</Text>
+        <Text style={styles.textSizeM}>
+          {`${(time * 0.05).toFixed(2)} MUSIKE`}
+        </Text>
       </ViewToken>
     </View>
   );
@@ -139,6 +142,16 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     marginLeft: 16,
     marginRight: 30,
+  },
+  textSizeM: {
+    fontWeight: '500',
+    fontSize: 12,
+    color: '#FFFFFF',
+  },
+  textBlurred: {
+    fontWeight: '500',
+    fontSize: 12,
+    color: '#979797',
   },
 });
 

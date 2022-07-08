@@ -11,6 +11,7 @@ import CustomDrawer from '../components/CustomDrawer';
 import SearchScreen from './SearchScreen';
 import PlayMusicScreen from './PlayMusic/PlayMusicScreen';
 import WalletScreen from '../screens/WalletScreen/WalletScreen';
+import TextScreen from './TextScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -36,15 +37,6 @@ function OnboardingScreen() {
           drawerIcon: ({color}) => <Icon name="home" color={color} size={20} />,
         })}
       />
-      {/* <Drawer.Screen
-        name="PlayMusic"
-        component={PlayMusicScreen}
-        options={() => ({
-          drawerIcon: ({color}) => (
-            <Icon name="music" color={color} size={20} />
-          ),
-        })}
-      /> */}
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}
@@ -74,6 +66,14 @@ function OnboardingScreen() {
         options={{
           drawerItemStyle: {display: 'none'},
         }}
+      />
+
+      <Drawer.Screen
+        name="tesst"
+        component={TextScreen}
+        // options={{
+        //   drawerItemStyle: {display: 'none'},
+        // }}
       />
     </Drawer.Navigator>
   );

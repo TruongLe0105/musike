@@ -69,7 +69,7 @@ const LIST3 = [
   },
 ];
 
-function Charts() {
+function HomeBody() {
   const TopTrend = ({data}) => {
     const itemNewNFTs = ({item, index}) => {
       return (
@@ -84,7 +84,7 @@ function Charts() {
     };
 
     return (
-      <View style={styles.chart}>
+      <View style={styles.homeBody}>
         <TouchableOpacity style={styles.boxTitle}>
           <Text style={styles.title}>New NFTs</Text>
           <Icon name="angle-right" color="white" size={16} />
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 18,
   },
-  chart: {
+  homeBody: {
     marginBottom: 26,
   },
   boxTitle: {
@@ -164,8 +164,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Open Sans',
     fontWeight: '700',
     textAlign: 'center',
+    // alignItems: 'center',
   },
   textDown: {
+    // alignItems: 'center',
     textAlign: 'center',
     color: '#FFFFFF',
     fontSize: 10,
@@ -180,4 +182,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Charts;
+export default HomeBody;

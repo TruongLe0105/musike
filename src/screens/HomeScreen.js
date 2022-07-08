@@ -12,7 +12,7 @@ import SearchInput from '../components/SearchInput';
 import background from '../assets/sources/background_home.png';
 import Genres from '../components/home/Genres/Genres';
 import BannerHome from '../components/home/BannerHome';
-import Charts from '../components/home/Charts';
+import HomeBody from '../components/home/HomeBody';
 
 function HomeScreen({navigation}) {
   return (
@@ -24,7 +24,7 @@ function HomeScreen({navigation}) {
           <SearchInput navigation={navigation} editable={false} />
           <BannerHome />
           <Genres navigation={navigation} />
-          <Charts />
+          <HomeBody />
         </View>
       </ImageBackground>
     </ScrollView>

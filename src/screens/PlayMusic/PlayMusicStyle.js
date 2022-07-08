@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
   toast: {
     backgroundColor: '#ffffffcf',
     paddingVertical: 25,
-    fontSize: 14,
+    // fontSize: 14,
     paddingHorizontal: 25,
-    textAlign: 'center',
+    // textAlign: 'center',
     borderRadius: 15,
   },
   wrapperFooter: {

@@ -71,6 +71,9 @@ const PlayMusicScreen = ({navigation}) => {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
   const [temp, setTemp] = useState({});
 
+  const state = usePlaybackState();
+  const isPlaying = state === State.Playing;
+
   const [isShowAward, setShowAward] = useState(false);
 
   const [isShowFirstModal, setModalFirst] = useState(false);
@@ -188,6 +191,10 @@ const PlayMusicScreen = ({navigation}) => {
     );
   };
 
+  const handleTracklist = () => {
+    isPlaying ? navigation.navigate('Tracklist') : '';
+  };
+
   return (
     <SafeAreaView style={styles.screenContainer}>
       <StatusBar barStyle={'light-content'} />
@@ -257,6 +264,7 @@ const PlayMusicScreen = ({navigation}) => {
                 <Image source={micro} style={{marginRight: 20}} />
               </TouchableOpacity>
               <TouchableOpacity
+                onPress={handleTracklist}
                 style={{
                   padding: 10,
                 }}>

@@ -62,19 +62,19 @@ import HeaderTab from '../../components/HeaderTab/HeaderTab';
   ];
 
 function NextSongScreen({navigation}) {
-  const [action, setAction] = useState(2);
+  const [active, setActive] = useState(2);
   const [switchOn, setSwitchOn] = useState(false);
 
   const renderSongs = ({item, index}) => {
     const handlePress = () => {
-      setAction(index);
+      setActive(index);
       navigation.navigate('PlayMusic');
     };
 
     return (
       <TouchableOpacity onPress={handlePress}>
         <Image
-          style={action === index ? styles.viewImage : styles.hideImage}
+          style={active === index ? styles.viewImage : styles.hideImage}
           source={background}
         />
         <View key={index} style={styles.item}>

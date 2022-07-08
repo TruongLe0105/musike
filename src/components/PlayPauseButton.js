@@ -130,12 +130,14 @@ export const PlayPauseButton = ({refToast, showReward}) => {
         style={{
           backgroundColor: 'white',
           paddingVertical: 10,
-          fontSize: 14,
+          // fontSize: 14,
           paddingHorizontal: 20,
-          textAlign: 'center',
+          // textAlign: 'center',
+          alignItems: 'center',
         }}
         textStyle={{
-          textAlign: 'center',
+          alignItems: 'center',
+          // textAlign: 'center',
           color: 'black',
         }}
         position="center"

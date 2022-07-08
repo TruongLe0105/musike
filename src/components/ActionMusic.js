@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 
-import {View, StyleSheet, Animated, Easing} from 'react-native';
+import {View, StyleSheet, Animated, Easing, FlatList, Text} from 'react-native';
 import {usePlaybackState, State} from 'react-native-track-player';
 
 function ActionMusic() {
@@ -20,7 +20,7 @@ function ActionMusic() {
         Animated.timing(opacityFirst.current, {
           toValue: 0,
           duration: 2000,
-          easing: Easing.linear, // Easing is an additional import from react-native
+          easing: Easing.quad, // Easing is an additional import from react-native
           useNativeDriver: true, // To make use of native driver for performance
         }),
       ).start();
@@ -28,7 +28,7 @@ function ActionMusic() {
         Animated.timing(opacitySecond.current, {
           toValue: 1,
           duration: 2000,
-          easing: Easing.linear, // Easing is an additional import from react-native
+          easing: Easing.quad, // Easing is an additional import from react-native
           useNativeDriver: true, // To make use of native driver for performance
         }),
       ).start();
@@ -40,212 +40,57 @@ function ActionMusic() {
 
   const opacityViewFirst = opacityFirst?.current?.interpolate({
     inputRange: [0, 1],
-    outputRange: [0.6, 1],
+    outputRange: [0, 4],
   });
   const opacityViewSecond = opacitySecond?.current?.interpolate({
     inputRange: [0, 1],
-    outputRange: [0.6, 1],
+    outputRange: [0.7, 1],
   });
 
+  const LIST = [
+    '100%',
+    '80%',
+    '60%',
+    '50%',
+    '40%',
+    '100%',
+    '20%',
+    '50%',
+    '80%',
+    '60%',
+    '40%',
+    '50%',
+    '100%',
+    '40%',
+    '80%',
+    '100%',
+    '60%',
+    '80%',
+    '40%',
+  ];
+
+  // const randomOpacity = [opacityViewFirst, opacityViewSecond];
+
+  const renderItem = ({item, index}) => {
+    return (
+      <Animated.Text
+        key={index}
+        style={{
+          width: 3,
+          height: item,
+          marginRight: 2,
+          borderRadius: 0.5,
+          backgroundColor: '#FFFFFF',
+          // opacity: randomOpacity[Math.floor(Math.random() * 2)],
+          // opacity: opacityViewFirst,
+          transform: [{translateY: opacityViewFirst}],
+          alignSelf: 'center',
+        }}
+      />
+    );
+  };
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Animated.View
-        // style={[styles.artwork, {transform: [{rotate: spin}]}]}
-        style={{
-          width: 2.5,
-          height: '100%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '80%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '60%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '40%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '30%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '100%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '20%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '60%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '80%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '60%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '40%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '50%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '100%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '40%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '80%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '100%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '60%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '80%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewSecond,
-        }}
-      />
-      <Animated.View
-        style={{
-          width: 2.5,
-          height: '40%',
-          marginRight: 2,
-          borderRadius: 0.5,
-          backgroundColor: '#FFFFFF',
-          opacity: opacityViewFirst,
-        }}
-      />
-    </View>
+    <Animated.FlatList data={LIST} renderItem={renderItem} horizontal={true} />
   );
 }
 

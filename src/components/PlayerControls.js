@@ -7,7 +7,6 @@ import {PlayPauseButton} from './PlayPauseButton';
 import prev from '../assets/sources/playMusic/prev.png';
 import next from '../assets/sources/playMusic/next.png';
 import reload from '../assets/sources/playMusic/reload.png';
-import iconMusic from '../assets/sources/playMusic/iconMusic.png';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
